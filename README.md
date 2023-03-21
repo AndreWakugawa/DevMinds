@@ -1,8 +1,5 @@
-# avaliacaodemocratica
+# Avaliação Democrática
 
-A instituição de ensino fictícia PBLTeX, especializada em cursos práticas de ensino aplicando
-PBL (Problem Based Learning) desenvolveu uma dinâmica de Avaliação
-Democratizada baseada na técnica de Avaliação 360º.
+Repositório para o desenvolvimento de uma solução para a técnica de avaliação 360, baseada na interação entre ADMs, Times, Grupos e Integrantes, contando com a autoavaliação. Possui dashboards para análise das avaliações e editção de cadastros.
 
-O desafio é apoiar a PBLTeX a levantar, especificar e desenvolver uma
-solução computacional que viabilize a aplicação dessa técnica
+Escrito em Python com o uso de banco de dados em .CSV
