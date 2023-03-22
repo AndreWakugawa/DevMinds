@@ -1,7 +1,7 @@
-# IMPORTS PRÓPRIOS
+# Imports próprios
 import config
 
-# IMPORTS TERCEIROS
+# Imports terceiros
 import pandas
 
 # LÊ A TABELA DA CONFIG.PY

@@ -1,2 +1,2 @@
-# URL ou diretório do .csv utilizado
-tabela_DIR = 'https://github.com/AndreWakugawa/DevMinds/blob/main/sample.csv'
+# Lê URL do diretório no GitHub, onde o .csv está localizado
+tabela_DIR = 'sample.csv'
