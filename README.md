@@ -20,11 +20,6 @@ A Avaliação Democratizada (também nomeada de avaliação 360 graus) é uma di
 - [ ] Linguagem de programação Python;
 - [ ] Arquivo em Text, CSV, JSON ou outros formatos).
 
-## Documentação 📋
-- [ClickUp](https://app.clickup.com/9007095918/v/s/90070215479) Backlog
-- [Miro](https://miro.com/app/board/uXjVMY5EpQI=/) Registro Scrum
-- [Miro](https://miro.com/app/board/uXjVMe5mTZ4=/?share_link_id=342865310838) Registro Geral
-
 ## Cronograma do projeto
 | FASE | INÍCIO | FIM |
 | --- | --- | --- |
