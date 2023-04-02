@@ -8,6 +8,13 @@ Nosso desafio é apoiar a PBLTeX a levantar, especificar e desenvolver uma solu�
 ## Sobre a Avaliação Democratizada 🔍
 A Avaliação Democratizada (também nomeada de avaliação 360 graus) é uma dinâmica de feedback no qual os integrantes de um grupo avaliam seus colegas de acordo com os fatores estabelecidos, além de contar com sua autoavaliação.
 
+# Visão do projeto
+Como uma instituição de ensino, a PBLTeX busca a implementação de sua dinâmica avaliativa.
+
+Para isso devemos desenvolver uma solução direcionada ao meio acadêmico, que esteja de acordo com as relações dentro de tal ambiente e que inclua os fatores de feedback solicitados.
+
+Separando as necessidades de acordo com as posições e necessidades, nesse caso professor-aluno, ou respectivamente, ADM-User.
+
 ## Requisitos funcionais
 - [ ] Permitir a avaliação entre os integrantes dos times e a sua autoavaliação;
 - [ ] Controlar acesso de usuários (login);
@@ -18,7 +25,7 @@ A Avaliação Democratizada (também nomeada de avaliação 360 graus) é uma di
 
 ## Requisitos não funcionais
 - [ ] Linguagem de programação Python;
-- [ ] Arquivo em Text, CSV, JSON ou outros formatos).
+- [ ] Arquivo em Text, CSV, JSON ou outros formatos.
 
 ## Cronograma do projeto
 | FASE | INÍCIO | FIM |
