@@ -6,6 +6,7 @@
 
 ># Entregáveis da Sprint 3
 > Expectativas para sprint após o planejamento, não seguem uma ordem em particular nesta representação.
+
 | Descrição | Prioridade |
 | :----: | :----: |
 | x | x |
