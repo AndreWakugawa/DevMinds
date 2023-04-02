@@ -58,7 +58,7 @@ Separando as necessidades de acordo com as posições e necessidades, nesse caso
 | :---: | :---: | :---: | :---: |
 | Dono do Produto (PO) | André Wakugawa | [<img height="32" width="32" src="https://cdn.simpleicons.org/github/white" />](https://github.com/AndreWakugawa)| [<img height="32" width="32" src="https://cdn.simpleicons.org/linkedin" />](https://www.linkedin.com/in/andr%C3%A9-wakugawa-b07527182/) |
 | | | | |
-| Mestre Scrum (SM) | Ricardo Reis | [<img height="32" width="32" src="https://cdn.simpleicons.org/github/white" />](https://github.com/RicardoReis5)| [<img height="32" width="32" src="https://cdn.simpleicons.org/linkedin" />](https://www.linkedin.com/in/andr%C3%A9-wakugawa-b07527182/) |
+| Mestre Scrum (SM) | Ricardo Reis | [<img height="32" width="32" src="https://cdn.simpleicons.org/github/white" />](https://github.com/RicardoReis5)| [<img height="32" width="32" src="https://cdn.simpleicons.org/linkedin" />](https://www.linkedin.com/in/ricardo-reis-78a0b7271/) |
 | | | | |
 | Desenvolvedor (DEV) | Carlos Daniel | [<img height="32" width="32" src="https://cdn.simpleicons.org/github/white" />](https://github.com/CarlosDan23)| [<img height="32" width="32" src="https://cdn.simpleicons.org/linkedin" />](https://www.linkedin.com/in/carlos-daniel-fonseca-de-souza-b20026205/) |
 | Desenvolvedor (DEV) | Cauê Silva | [<img height="32" width="32" src="https://cdn.simpleicons.org/github/white" />](https://github.com/CauevSilv)| [<img height="32" width="32" src="https://cdn.simpleicons.org/linkedin" />](https://www.linkedin.com/in/cau%C3%AA-vieira-ba62b4244/) |
