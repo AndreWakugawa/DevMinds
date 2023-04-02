@@ -7,6 +7,10 @@ Devido ao aprendizado com as metodologias ageis, o foco em grande parte foi em r
 - [Board Scrum (Miro)](https://miro.com/app/board/uXjVMY5EpQI=/?share_link_id=258031151867)
 - [Distribuição de Tasks (ClickUp)](https://sharing.clickup.com/9007095918/l/h/4-90070215479-1/fbcc296d506a261)
 
+#### Fluxogramas
+- [Diagrama Banco de Dados](SprintLogs/DiagramaDB1.0.pdf)
+- [Fluxograma Login](SprintLogs/Login.png)
+
 # Entregáveis da Sprint 1
 > Expectativas para sprint após o planejamento, não seguem uma ordem em particular nesta representação.
 
