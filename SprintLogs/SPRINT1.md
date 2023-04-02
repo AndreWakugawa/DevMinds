@@ -1,10 +1,16 @@
 ## Observações da Sprint 1
 
-Como o grupo inteiro não teve experiência anterior com a organização e método SCRUM, a primeira sprint foi focada quase que em sua totalidade no planejamento e organização do projeto. Não entendíamos a aplicação de Epics e User Stories e por isso não foram desenvolvidos, apenas planejados, os recursos entregáveis para o cliente.
+Devido ao aprendizado com as metodologias ageis, o foco em grande parte foi em relação ao planejamento e organização do grupo e do projeto. A documentação base é o essencial, assim como a definição das prioridades para o desenvolvimento, cliente, e a busca por clareza dos objetivos.
+
+#### Registros do planejamento:
+- [Brainstorming Board (Miro)](https://miro.com/app/board/uXjVMe5mTZ4=/?share_link_id=136549221515)
+- [Board Scrum (Miro)](https://miro.com/app/board/uXjVMY5EpQI=/?share_link_id=258031151867)
 
 # Entregáveis da Sprint 1
+> Expectativas para sprint após o planejamento, não seguem uma ordem em particular nesta representação.
+
 | Descrição | Prioridade |
-|----| ----|
+| :---- | :----: |
 | Documentação da Sprint Planning | Essencial |
 | Registro das tecnologias/ferramentas utilizadas | Essencial |
 | Integração dos membros da equipe no projeto | Essencial |
