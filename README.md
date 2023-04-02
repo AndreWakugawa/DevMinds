@@ -1,12 +1,12 @@
 
 # Índice
-- [Projeto eVAL360](https://github.com/AndreWakugawa/DevMinds/blob/main/README.md#projeto-eval360)
-- [Visão do Projeto](https://github.com/AndreWakugawa/DevMinds/blob/main/README.md#vis%C3%A3o-do-projeto)
-- [Requisitos funcionais](https://github.com/AndreWakugawa/DevMinds/blob/main/README.md#requisitos-funcionais-para-conclus%C3%A3o-do-projeto)
-- [Requisitos não funcionais](https://github.com/AndreWakugawa/DevMinds/blob/main/README.md#requisitos-n%C3%A3o-funcionais)
-- [Cronograma](https://github.com/AndreWakugawa/DevMinds/blob/main/README.md#cronograma-do-projeto)
-- [Membros](https://github.com/AndreWakugawa/DevMinds/blob/main/README.md#membros-da-devminds)
-- [Tecnologias](https://github.com/AndreWakugawa/DevMinds/blob/main/README.md#tecnologias-utilizadas)
+- [Projeto eVAL360](https://github.com/AndreWakugawa/DevMinds#projeto-eval360)
+- [Visão do Projeto](https://github.com/AndreWakugawa/DevMinds#vis%C3%A3o-do-projeto)
+- [Requisitos funcionais](https://github.com/AndreWakugawa/DevMinds#requisitos-funcionais-para-conclus%C3%A3o-do-projeto)
+- [Requisitos não funcionais](https://github.com/AndreWakugawa/DevMinds#requisitos-n%C3%A3o-funcionais)
+- [Cronograma](https://github.com/AndreWakugawa/DevMinds#cronograma-do-projeto)
+- [Membros](https://github.com/AndreWakugawa/DevMinds#membros-da-devminds)
+- [Tecnologias](https://github.com/AndreWakugawa/DevMinds#tecnologias-utilizadas)
 
 
 # Projeto eVAL360
