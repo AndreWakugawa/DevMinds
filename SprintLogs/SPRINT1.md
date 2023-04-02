@@ -9,7 +9,7 @@ Devido ao aprendizado com as metodologias ageis, o foco em grande parte foi em r
 
 #### Fluxogramas
 - [Diagrama Banco de Dados](SprintLogs/DiagramaDB1.0.pdf)
-- [Fluxograma Login](SprintLogs/Login.png)
+- [Fluxograma Login](https://github.com/AndreWakugawa/DevMinds/blob/main/SprintLogs/Login.png)
 
 # Entregáveis da Sprint 1
 > Expectativas para sprint após o planejamento, não seguem uma ordem em particular nesta representação.
