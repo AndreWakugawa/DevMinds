@@ -140,3 +140,5 @@ while autogestao0 >4:
 
 # Fim da avaliação
 print ("Avaliação finalizada!!!")
+
+#Review > Tudo certo com o código (Gabriel)
