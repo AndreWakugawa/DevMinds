@@ -11,18 +11,23 @@ fatores_chave = ["Comunicação e Trabalho em Equipe", "Engajamento e Pró-ativi
 
 avaliacoes = []
 
-#Puxar ID dos integrantes pelo arquivo CSV
-integrantes = ["Aluno 1", "Aluno 2", "Aluno 3",]
+# Puxar ID dos integrantes pelo arquivo CSV
+integrantes = ["Aluno 1", "Aluno 2", "Aluno 3"]
 
 for fator in fatores_chave:
     print(f"AVALIAÇÃO: {fator}\n")
     avaliacoes_fator = []
     for pessoa in integrantes:
-        avaliacao = 10
-        while avaliacao > 4:
-            avaliacao = int(input(f"Em uma escala de 0 a 4, para {fator}, como você avalia o seu {pessoa}?\n"))
-            if avaliacao > 4:
-                print("Escala incorreta, por favor avalie de 0 a 4!\n")
+        while True:
+            avaliacao = input(f"Em uma escala de 0 a 4, para {fator}, como você avalia o seu {pessoa}?\n")
+            try:
+                avaliacao = int(avaliacao)
+                if 0 <= avaliacao <= 4:
+                    break
+                else:
+                    print("Escala incorreta, por favor avalie de 0 a 4!\n")
+            except ValueError:
+                print("Valor inválido, por favor insira um número inteiro!\n")
         avaliacoes_fator.append(avaliacao)
     avaliacoes.append(avaliacoes_fator)
 
