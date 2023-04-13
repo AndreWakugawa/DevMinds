@@ -57,9 +57,8 @@ for fator in fatores_chave:
     avaliacoes_fator = []
     for colega in integrantes:
         while True:
-            avaliacao = input(f"Em uma escala de 0 a 4, para {fator}, como você avalia {colega}?\n")
+            avaliacao = int(input(f"Em uma escala de 0 a 4, para {fator}, como você avalia {colega}?\n"))
             try:
-                avaliacao = int(avaliacao)
                 if 0 <= avaliacao <= 4:
                     break
                 else:
