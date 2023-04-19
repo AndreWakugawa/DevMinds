@@ -16,26 +16,25 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 # Identificar o caminho do csv relativo a pasta do script:
 csv_path = os.path.join(script_dir, 'aval.csv')
 
-# Abrir o arquivo csv para LER e extrair os usuários do time
+# Abrir o arquivo csv para LER e extrair os usuários do time na turma (NESSE CASO TIME 1 DA TURMA 1!!!)
 with open(csv_path, 'r') as avalcsv:
     avalread = csv.reader(avalcsv)
 
     # Pegar o header do csv
     header = next(avalread)
 
-    # Definir a coluna para encontrar o time
-    time = "time"
-    colunatime = header.index(time)
+    # Definir a coluna para encontrar a turma
+    turma = "turma"
+    colunaturma = header.index(turma)
 
     # Pesquisar por linha
     for linha in avalread:
-        # Checar igualdade entre coluna time e código desejado, nesse caso: 11
-        # # !!! ENCONTRAR UM JEITO DE PEGAR O CÓDIGO DO TIME ATRAVÉS DO USUÁRIO QUE LOGOU PARA AVALIAR !!!
-        if linha[colunatime] == "11":
-            # Checa se o integrante já não está na lista
-            if linha[colunatime + 3] not in integrantes:
-                # Com a igualdade, adicionar os integrantes da quarta coluna, 'aluno' (coluna 1 + 3) que forem do time 11
-                integrantes.append(linha[colunatime + 3])
+        # Checar igualdade entre coluna turma e código desejado, nesse caso: 1; E chega time e código desejado, nesse caso também 1
+        ### !!! ENCONTRAR UM JEITO DE PEGAR O CÓDIGO DA TURMA ATRAVÉS DO USUÁRIO QUE LOGOU PARA AVALIAR !!!
+        if linha[colunaturma] == "1" and linha[colunaturma + 1] == "1":
+            # Com a igualdade, adicionar os integrantes da quinta coluna, 'aluno' (coluna 1 + 4) que forem do da turma 1, time 1
+            if linha[colunaturma + 4] not in integrantes:
+                integrantes.append(linha[colunaturma + 4])
 
 
 
