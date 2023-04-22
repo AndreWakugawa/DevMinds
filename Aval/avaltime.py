@@ -49,3 +49,28 @@ while True:
         break
     else:
         print("Aluno inexistente.")
+
+
+    fatores_chave = ["\nComunicação e Trabalho em Equipe",
+                    "\nEngajamento e Pró-atividade",
+                    "\nConhecimento e Aplicabilidade Técnica",
+                    "\nEntrega de Resultados com Valor Agregado",
+                    "\nAuto-gestão das Atividades"]
+    avaliacoes = []
+    integrantes = []
+
+    for colega in integrantes: # Loop de cada fator de avaliação
+        print(f"AVALIAÇÃO: {colega}\n")
+        avaliacoes_fator = []
+        for fator in fatores_chave: # Loop da avaliação de cada integrante
+            while True:
+                avaliacao = int(input(f"Em uma escala de 1 a 5 em {fator}, como você avalia {colega}?\n"))
+                try:
+                    if avaliacao != [1,2,3,4,5]:
+                        break
+                    else:
+                        print("Escala incorreta, por favor avalie de 1 a 5!\n")
+                except ValueError:
+                    print("Valor inválido, por favor insira um número inteiro!\n")
+            avaliacoes_fator.append(avaliacao)
+        avaliacoes.append(avaliacoes_fator)
