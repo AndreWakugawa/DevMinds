@@ -3,7 +3,7 @@
 Desenvolvido em Python para Windows. Realiza a dinâmica de avaliação democrática com base nos fatores indicados pela instituição fictícia PBLTeX.
 
 ## Dependências
-Testado somente em Windowns 10 versão x64!
+Testado somente em Windows 10 versão x64!
 - [Python v3.11](https://www.python.org/downloads/release/python-3113/)
 - [Git v2.40.0.1](https://git-scm.com/download/win)
 - IDE que suporte as dependências acima - Recomendamos o [Visual Studio Code](https://code.visualstudio.com/download) da Microsoft, onde foi o projeto foi desenvolvido
@@ -42,6 +42,7 @@ Considerando sua utilização no meio acadêmico, torna-se necessária a integra
 #### Registros do desenvolvimento:
 - [Backlog do Projeto](https://docs.google.com/spreadsheets/d/e/2PACX-1vSXrU8hRDdd5Apd1vfbBjka0u4s6GjrnXp_hvKuKjeOLnAqt-WeYSWXtWQMfjsiSOKTDUmlaPw51owL/pubhtml?gid=0&single=true)
 - [Fluxogramas](https://github.com/AndreWakugawa/DevMinds/blob/main/SprintLogs/Fluxogramas.md)
+- [Burndown](https://docs.google.com/spreadsheets/d/e/2PACX-1vRdwpLgvWcvig2SOhYX_FDh5E4AYJBPrE1isTvE45dqPB6IWCuHwFDruRlMcrJ7TGdVD6nyTaUSPD2c/pubhtml?gid=806038905&single=true)
 
 #### Registros do planejamento:
 - [Brainstorming Board (Miro)](https://miro.com/app/board/uXjVMe5mTZ4=/?share_link_id=136549221515)
