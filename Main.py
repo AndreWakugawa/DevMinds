@@ -11,6 +11,7 @@ import pwinput as pw # Transforma senha em asterisco / pip install pwinput
 from packages.login_module import login_check
 from packages.eval_module import eval
 from packages.signup_module import add_cad
+from packages.evalcad_module import evalcad
 
 while True: # Loop do login até ser valido
     id = []
@@ -31,6 +32,7 @@ while True: # Loop de opções
     
     if opção == 1:
         add_cad() # Funcao cadastro
+        evalcad()
     elif opção == 2:
         eval() # Funcao avaliacao
     elif opção == 3:
