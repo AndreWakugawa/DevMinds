@@ -24,6 +24,6 @@ def add_cad():
     # Inserção das variáveis dentro de uma lista
 
     # Sem um novo arquivo "cadastro.csv" seria criado dentro do CWD (no caso, direto no repo DevMinds).
-    with open(csv_path,'a', newline='') as cad_csv: # Abre csv, inserindo uma nova linha
+    with open(csv_path,'a', newline='', encoding='utf-8') as cad_csv: # Abre csv, inserindo uma nova linha
         csv_writer = csv.writer(cad_csv) # Objeto de escrito do csv
         csv_writer.writerow([id, nome, email, senha])
