@@ -1,5 +1,4 @@
 import csv
-import pandas as pd
 
 #tabela Turma
 turma_data = [
