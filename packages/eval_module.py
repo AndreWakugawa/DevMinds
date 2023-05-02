@@ -34,7 +34,7 @@ def eval():
         print("\nIntegrantes do Time:")
         for integrante_nome in integrantes_nome: # Print dos integrantes do time
             if integrante_nome == nome:
-                print(f'{integrante_nome} <Você')
+                print(f'{integrante_nome} <Você>')
             else:
                 print(integrante_nome)
 
@@ -54,12 +54,21 @@ def eval():
                         while True: # Faz loop até finalizar avaliação
                             avaliacao = input(f"Na escala de 1 a 5 em {fator}, como você {pergunta[pergunta_index]}?\n")
                             try:
-                                if avaliacao.isnumeric() and int(avaliacao) in range(1, 6): # Limita valor input
-                                    break
-                                else:
+                                if avaliacao.isnumeric() and int(avaliacao) not in range(1, 6): # Limita valor input
                                     print("Escala incorreta\n")
+                                else:
+                                    break
                             except ValueError:
-                                print("Valor inválido\n")      
+                                print("Valor inválido\n")  
+                        # Feedback caso a avaliação seja entre 1 e 3
+                        if int(avaliacao) in range(1,4):
+                            feedback_confirm = ""
+                            while feedback_confirm not in ['y']:
+                                feedback = input(f"Insira um feedback de como {integrante} pode melhorar em {fator}:\n")
+                                feedback_confirm = input("Você confirma o feedback?(y/n)\n")
+                                if feedback_confirm != "y":
+                                    print ("Tente novamente:")
+                                ### FALTA REGISTRO DO FEEDBACK EM CSV
                         # Nos appends juntam-se as notas dadas em uma lista
                         avaliacoes_fator.append(avaliacao)
                     avaliacoes.append(avaliacoes_fator)
