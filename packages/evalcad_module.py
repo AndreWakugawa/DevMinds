@@ -1,20 +1,32 @@
 def evalcad():
-    import os, sys, csv # Puxa imports da main
-    import pandas as pd # Importa o pandas 
-    filename = 'login_data.csv' # Nome do arquivo
-    target_dir = 'data_sample/' # Diretório relativo
-    csv_path = os.path.join(target_dir, filename) # Seleciona diretório
-    csv_path2 = os.path.join(target_dir,'aval_data.csv') # Concatena o diretório e nome do aval_data.csv
+    from Main import csv, sys, os
 
-# Lê os arquivos .csv em forma de dataframe
-    df_original = pd.read_csv(csv_path) 
-    df_destino = pd.read_csv(csv_path2)
+    filename = 'login_data.csv'
+    target_dir = 'data_sample/'
+    csv_path = os.path.join(target_dir, filename)
+    csv_path2 = os.path.join(target_dir, 'aval_data.csv')
 
-# Seleciona apenas a coluna id e nome do login_data.csv e cria um novo dataframe somente com os dados filtrados
-    colunas_desejadas = ['id', 'nome'] 
-    df_selecionado = df_original[colunas_desejadas].tail(1)
+    with open(csv_path, 'r', encoding='utf-8') as f1, open(csv_path2,'r+', encoding='utf-8') as f2:
+        # Lê os arquivos .csv usando a biblioteca csv
+        reader1 = csv.DictReader(f1)
+        reader2 = csv.DictReader(f2)
 
-    df_concatenado = pd.concat([df_selecionado,df_destino],ignore_index=True) #Aqui o novo dataframe filtrado é concatenado junto com a aval_data.csv
+        # Cria um dicionário com os dados do último registro do arquivo login_data.csv
+        last_row = None
+        for row in reader1:
+            last_row = row
+        dict_selecionado = {'id': last_row['id'], 'nome': last_row['nome']}
 
-    df_concatenado.to_csv(csv_path2, index=False) #Nesse momento, todo o arquivo aval_data.csv é substituido por um novo aval_data.csv com os novos dados dentro.
-evalcad()
+        # Verifica se o usuário a ser adicionado já existe no arquivo destino
+        exists = False
+        for row in reader2:
+            if row['id'] == dict_selecionado['id']:
+                exists = True
+                break
+        # Adiciona uma nova linha no arquivo destino se o usuário não existir
+        if not exists:
+            f2.write('\n')
+            writer = csv.DictWriter(f2, fieldnames=['id', 'nome'],skipinitialspace=False,lineterminator='') #Isso é o que realmente escreve no arquivo. O parâmetro 'lineterminator' é forçado com o valor nulo para não criar uma linha nova.
+            writer.writerow(dict_selecionado)
+            
+            f2.write(',,,,,,,,,,,,,,,,,,,,,,,,,')
