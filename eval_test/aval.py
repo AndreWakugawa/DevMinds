@@ -11,10 +11,10 @@ integrantes = []
 
 
 # Pegar a pasta em que este script está:
-script_dir = os.path.dirname(os.path.abspath(__file__))
+script_dir = 'data_sample/'
 
 # Identificar o caminho do csv relativo a pasta do script:
-csv_path = os.path.join(script_dir, 'aval.csv')
+csv_path = os.path.join(script_dir, 'aval_data.csv')
 
 # Abrir o arquivo csv para LER e extrair os usuários do time na turma (NESSE CASO SPRINT 1 DO TIME 1 DA TURMA 1!!!)
 with open(csv_path, 'r') as avalcsv:
@@ -27,7 +27,7 @@ with open(csv_path, 'r') as avalcsv:
     colunaturma = header.index('turma')
     colunatime = header.index('time')
     colunasprint = header.index('sprint')
-    colunaaluno = header.index('aluno')
+    colunaaluno = header.index('nome')
     colunanotas = header.index('notas')
 
     # Pesquisar por linha
