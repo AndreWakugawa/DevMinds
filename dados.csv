@@ -1,0 +1,6 @@
+id_turma,time,turma,cargo
+2,Time A,Turma 1,Professor
+id_user,email,senha,nome
+2,email@test.com,senha,João
+id_avaliacao,id_turma,id_user,nota
+2,1,1,8.5
