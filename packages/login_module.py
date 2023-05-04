@@ -4,7 +4,7 @@ def login_check(id, nome):
     target_dir = 'Data_Sample/' # Diretório relativo
     csv_path = os.path.join(target_dir, filename) # Seleciona diretório
 
-    with open(csv_path,'r', newline='') as cad_csv: # Abrir o arquivo para extrair logins
+    with open(csv_path,'r', newline='',encoding='utf-8') as cad_csv: # Abrir o arquivo para extrair logins
         reader_obj = csv.reader(cad_csv, quoting=csv.QUOTE_NONE) # Cria um objeto de leitura para CSV
         print('\nBem vindo ao eVAL360!\n'
                 'Antes de acessar, por favor faça seu login\n')

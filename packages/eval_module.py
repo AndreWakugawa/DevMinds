@@ -4,7 +4,7 @@ def eval():
     target_dir = 'Data_Sample/' # Diretório relativo
     csv_path = os.path.join(target_dir, filename) # Seleciona diretório
 
-    with open(csv_path, 'r+', newline='') as aval_csv:
+    with open(csv_path, 'r+', newline='',encoding='utf-8') as aval_csv:
         reader_obj = csv.reader(aval_csv, delimiter=',') # Cria um objeto de leitura para CSV
         next(reader_obj, None) # Ignora headers
 
