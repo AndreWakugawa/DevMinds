@@ -1,12 +1,10 @@
 def evalcad():
     from Main import csv, sys, os
 
-    filename = 'login_data.csv'
-    target_dir = 'data_sample/'
-    csv_path = os.path.join(target_dir, filename)
-    csv_path2 = os.path.join(target_dir, 'aval_data.csv')
+    filename_login = os.path.abspath('data_sample/login_data.csv')
+    filename_aval = os.path.abspath('data_sample/aval_data.csv')
 
-    with open(csv_path, 'r', encoding='utf-8') as f1, open(csv_path2,'r+', encoding='utf-8') as f2:
+    with open(filename_login, 'r', encoding='utf-8') as f1, open(filename_aval,'r+', encoding='utf-8') as f2:
         # Lê os arquivos .csv usando a biblioteca csv
         reader1 = csv.DictReader(f1)
         reader2 = csv.DictReader(f2)

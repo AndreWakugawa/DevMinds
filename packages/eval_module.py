@@ -1,10 +1,8 @@
 def eval():
     from Main import os, sys, csv, id, nome # Puxa imports da main
-    filename = 'aval_data.csv' # Nome do arquivo
-    target_dir = 'Data_Sample/' # Diretório relativo
-    csv_path = os.path.join(target_dir, filename) # Seleciona diretório
+    filename = os.path.abspath('data_sample/login_data.csv') # Nome do arquivo
 
-    with open(csv_path, 'r+', newline='',encoding='utf-8') as aval_csv:
+    with open(filename, 'r+', newline='',encoding='utf-8') as aval_csv:
         reader_obj = csv.reader(aval_csv, delimiter=',') # Cria um objeto de leitura para CSV
         next(reader_obj, None) # Ignora headers
 
