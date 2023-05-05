@@ -6,6 +6,12 @@ def eval():
 
     with open(csv_path, 'r+', newline='') as aval_csv:
         reader_obj = csv.reader(aval_csv, delimiter=',') # Cria um objeto de leitura para CSV
+
+        dados = [csvlinha for csvlinha in reader_obj] # reescrita do csv dentro de lista em python
+        fb_coluna_index = 10 # Coluna inicial dos feedbacks no aval_data.csv
+        crit_coluna_index = 5 # Coluna inicial dos critérios no aval_data.csv
+        aval_csv.seek(0)
+
         next(reader_obj, None) # Ignora headers
 
         avaliacoes = []
@@ -16,6 +22,7 @@ def eval():
                         "Auto-gestão das Atividades"]
         
         id_coluna_index = 0
+        #reader_obj_w_header = csv.reader(aval_csv, delimiter=',') # Segundo Reader NECESSÁRIO para que a primeira linha (atualmente 1001 joao) não seja ignorada
         for linha in reader_obj: #Loop até valores das colunas baterem numa linha
             if linha[id_coluna_index] == id:
                 turma = linha[2] # index coluna turma
@@ -24,12 +31,14 @@ def eval():
 
                 integrantes_nome = []
                 integrantes_info = []
+                integrantes_id = {} # dict nome:id_user
+                
+                aval_csv.seek(0)
                 for linha_integrante in reader_obj:
                     if linha_integrante[2] == turma and linha_integrante[3] == time: #Checa se turma e time batem
                         integrantes_info.append(linha_integrante) # Junta nomes em lista
                         integrantes_nome.append(linha_integrante[1])
-        
-        integrantes_nome.append(nome) # Add user na lista de integrantes
+                        integrantes_id[linha_integrante[1]] = linha_integrante[0]
 
         print("\nIntegrantes do Time:")
         for integrante_nome in integrantes_nome: # Print dos integrantes do time
@@ -45,6 +54,7 @@ def eval():
                 avaliacoes_fator = []
                 aval_csv.seek(0) # Retorna pointer ao inicio do csv
                 for linha_integrante in reader_obj: # Busca linha por linha no csv
+                    feedback = ""
                     if integrante == nome: # Verifica se o nome é do próprio usuário
                         pergunta_index = 0
                         print('\nAUTOAVALIAÇÃO\n')
@@ -68,7 +78,17 @@ def eval():
                                 feedback_confirm = input("Você confirma o feedback?(y/n)\n")
                                 if feedback_confirm != "y":
                                     print ("Tente novamente:")
-                                ### FALTA REGISTRO DO FEEDBACK EM CSV
+                        # Registro do feedback
+                        for i, csvlinha in enumerate(dados):
+                            if csvlinha[id_coluna_index] == integrantes_id[integrante] and fb_coluna_index <=14:
+                                reg = csvlinha[fb_coluna_index]
+                                if reg == "":
+                                    dados[i][fb_coluna_index] = feedback
+                                else:
+                                    if feedback != "":
+                                        dados[i][fb_coluna_index] = f'{dados[i][fb_coluna_index]},{feedback}'
+                        feedback = ""
+                        fb_coluna_index += 1
                         # Nos appends juntam-se as notas dadas em uma lista
                         avaliacoes_fator.append(avaliacao)
                     avaliacoes.append(avaliacoes_fator)
@@ -81,4 +101,9 @@ def eval():
         else:
             print('Nome inválido, tente novamente.')
 
-    #Avaliação terminada, falta adicao de notas ao csv
+        aval_csv.seek(0)
+        avalwriter = csv.writer(aval_csv)
+        avalwriter.writerows(dados)
+        # Remove tudo após os writes para manter o arquivo limpo
+        aval_csv.truncate()
+        #Avaliação terminada, falta adicao de notas ao csv

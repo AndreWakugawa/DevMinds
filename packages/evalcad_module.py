@@ -17,4 +17,3 @@ def evalcad():
     df_concatenado = pd.concat([df_selecionado,df_destino],ignore_index=True) #Aqui o novo dataframe filtrado é concatenado junto com a aval_data.csv
 
     df_concatenado.to_csv(csv_path2, index=False) #Nesse momento, todo o arquivo aval_data.csv é substituido por um novo aval_data.csv com os novos dados dentro.
-evalcad()
