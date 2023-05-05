@@ -23,7 +23,6 @@ def evalcad():
                 break
         # Adiciona uma nova linha no arquivo destino se o usuário não existir
         if not exists:
-            f2.write('\n')
             writer = csv.DictWriter(f2, fieldnames=['id', 'nome'],skipinitialspace=False,lineterminator='') #Isso é o que realmente escreve no arquivo. O parâmetro 'lineterminator' é forçado com o valor nulo para não criar uma linha nova.
             writer.writerow(dict_selecionado)
             
