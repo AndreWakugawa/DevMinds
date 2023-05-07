@@ -1,39 +1,42 @@
 import csv
-
+#Início dados mockados
 #tabela Turma
 turma_data = [
-    {"id_turma": 2, "time": "Time A", "turma": "Turma 1", "cargo": "Professor"},
+    {"id_turma": "2", "id_time": "2", "turma": "Turma 1", "cargo": "Professor"},
 ]
 
 #tabela Usuário
 usuario_data = [
-    {"id_user": 2, "email": "email@test.com", "senha": "senha", "nome": "João"},
+    {"id_user": "2", "email": "email@test.com", "senha": "senha", "nome": "João"},
 ]
 
 #tabela Avaliação
 avaliacao_data = [
-    {"id_avaliacao": 2, "id_turma": 1, "id_user": 1, "nota": 8.5},
-]
+    {"id_avaliacao": "1", "id_turma": "2", "id_user": "2", "id_time": "2", "sprint":"3", "criterio1":"5", "criterio2":"5", "criterio3":"5", "criterio4":"5", "criterio5":"5", "fb1":"","fb2":"","fb3":"","fb4":"","fb5":""},]
+#Fim dados mockados
 
 # Criação do arquivo CSV
-with open("dados.csv", "w", newline="") as f:
+with open("turmasDB.csv", "w", newline="", encoding='utf-8') as f:
     # Dados da tabela Turma
-    writer = csv.DictWriter(f, fieldnames=["id_turma", "time", "turma", "cargo"])
+    writer = csv.DictWriter(f, fieldnames=["id_turma", "id_time", "turma", "cargo"])
     writer.writeheader()
     for row in turma_data:
         writer.writerow(row)
     
     # Dados da tabela Usuário
-    writer = csv.DictWriter(f, fieldnames=["id_user", "email", "senha", "nome"])
+with open ("usersDB.csv","w",newline="", encoding='utf-8') as usersDB:
+    writer = csv.DictWriter(usersDB, fieldnames=["id_user", "email", "senha", "nome"])
     writer.writeheader()
     for row in usuario_data:
         writer.writerow(row)
-    
-    # Dados da tabela Avaliação
-    writer = csv.DictWriter(f, fieldnames=["id_avaliacao", "id_turma", "id_user", "nota"])
+    #Dados tabela Avaliação
+
+with open("evalDB.csv", "w", newline="", encoding='utf-8') as eval:
+    writer = csv.DictWriter(eval, fieldnames=["id_avaliacao", "id_turma", "id_user", "id_time", "sprint", "criterio1", "criterio2", "criterio3", "criterio4", "criterio5", "fb1","fb2","fb3","fb4","fb5"])
     writer.writeheader()
     for row in avaliacao_data:
         writer.writerow(row)
+
 
 # add turma
     def adicionar_turma(id_turma, time, turma, cargo):
@@ -57,30 +60,6 @@ with open("dados.csv", "w", newline="") as f:
                     return row
             return None
         
-# add usuario
-def adicionar_usuario(id_user, email, senha, nome):
-    with open('dados.csv', 'a', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow([id_user, email, senha, nome])
-
-# excl. usuario
-def excluir_usuario(id_user):
-    with open('dados.csv', 'r', newline='') as f:
-        reader = csv.reader(f)
-        rows = [row for row in reader if row[0] != str(id_user)]
-    with open('dados.csv', 'w', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerows(rows)
-
-# bscr usuario
-def buscar_usuario(id_user):
-    with open('dados.csv', 'r', newline='') as f:
-        reader = csv.reader(f)
-        for row in reader:
-            if row[0] == str(id_user):
-                return row
-        return None
-
 # add avaliação   
 def adicionar_avaliacao(id_avaliacao, id_turma, id_user, nota):
     with open('dados.csv', 'a', newline='') as f:

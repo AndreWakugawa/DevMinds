@@ -11,6 +11,7 @@ import pwinput as pw # Transforma senha em asterisco / pip install pwinput
 from packages.login_module import login_check
 from packages.eval_module import eval
 from packages.signup_module import add_cad
+from Banco.search_user import buscar_usuario
 
 while True: # Loop do login até ser valido
     id = []
@@ -29,8 +30,16 @@ while True: # Loop de opções
     
     opção = int(input("Insira o número da opção:"))
     
-    if opção == 1:
-        add_cad() # Funcao cadastro
+    if opção == 1: #Manipulação de usuário
+        opções_user = ['Cadastrar um usuário','Procurar um usuário pela ID','Deletar um usuário.(ADM WIP)']
+        print(f'\n{nome}, o que deseja mudar em relação aos usuários?\n')
+        print (f'1.{opções_user[0]}\n2.{opções_user[1]}\n3.{opções_user[2]}')
+        opções_userSelect = int(input("Insira o número da opção:"))
+        if opções_userSelect == 1:
+            print("Opção 1 escolhida")
+            add_cad() # Funcao cadastro
+        elif opções_userSelect == 2:
+            buscar_usuario()
     elif opção == 2:
         eval() # Funcao avaliacao
     elif opção == 3:
