@@ -6,4 +6,5 @@ def buscar_usuario():
         cabecalhos = next(reader)
         for row in reader:
             if row[0] == id_userSearch:
-                print({cabecalhos[i]: row[i] for i in range(len(cabecalhos))})
+                print('\n'"Aqui estão os dados do usuário selecionado: ")
+                print('\n',{cabecalhos[i]: row[i] for i in range(len(cabecalhos))})
