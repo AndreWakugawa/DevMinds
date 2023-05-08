@@ -1,20 +1,25 @@
-import re
-
 def add_cad():
-    from Main import os, sys, csv, pw, uuid # Puxa imports da main
+    import re,os, sys, csv
+    import pwinput as pw
     from packages.evalcad_module import evalcad
-    filename = os.path.abspath('data_sample/login_data.csv') # Nome do arquivo
+    csv_path = os.path.abspath('usersDB.csv') # Nome do arquivo
     
     senha = None
     conf_senha = None
-    uuidFour = uuid.uuid4()
-    id = uuidFour
+    with open(csv_path, 'r',newline='',encoding='utf-8') as banco:
+        reader = csv.reader(banco)
+        id = 0
+        for i,row in enumerate(reader):
+            if i == 0:
+                continue
+            last_id = int(row[0])
+        id = last_id + 1
 
     # Expressão regular para validar e-mail
     email_regex = r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$'
     
     while True:
-        email = input("Insira seu e-mail: ")
+        email = input("Insira o e-mail do novo usuário: ")
         if re.match(email_regex, email):
             break
         else:
@@ -33,7 +38,7 @@ def add_cad():
     # Inserção das variáveis dentro de uma lista
 
     # Sem um novo arquivo "cadastro.csv" seria criado dentro do CWD (no caso, direto no repo DevMinds).
-    with open(filename,'a', newline='',encoding='utf-8') as cad_csv: # Abre csv, inserindo uma nova linha
+    with open(csv_path,'a', newline='',encoding='utf-8') as cad_csv: # Abre csv, inserindo uma nova linha
         csv_writer = csv.writer(cad_csv) # Objeto de escrito do csv
-        csv_writer.writerow([id, nome, email, senha])
-    evalcad()
+        csv_writer.writerow([id, email, senha, nome])
+    #evalcad() Desativado devido a alteração no banco. Aparentemente não precisa mais que a evalcad faça o trabalho. Por enquanto, é claro.
