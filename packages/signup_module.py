@@ -3,7 +3,7 @@ import re
 def add_cad():
     from Main import os, sys, csv, pw, uuid # Puxa imports da main
     from packages.evalcad_module import evalcad
-    filename = os.path.abspath('data_sample/aval_data.csv') # Nome do arquivo
+    filename = os.path.abspath('data_sample/login_data.csv') # Nome do arquivo
     
     senha = None
     conf_senha = None
