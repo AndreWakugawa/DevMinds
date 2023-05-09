@@ -7,7 +7,7 @@ turma_data = [
 
 #tabela Usuário
 usuario_data = [
-    {"id_user": "2", "email": "email@test.com", "senha": "senha", "nome": "João"},
+    {"id_user": "1", "id_time": "0", "id_turma": "0", "email": "aaa@adm.com", "senha": "111", "nome": "João", "ADM": "1"}
 ]
 
 #tabela Avaliação
@@ -25,7 +25,7 @@ with open("turmasDB.csv", "w", newline="", encoding='utf-8') as f:
     
     # Dados da tabela Usuário
 with open ("usersDB.csv","w",newline="", encoding='utf-8') as usersDB:
-    writer = csv.DictWriter(usersDB, fieldnames=["id_user", "email", "senha", "nome"])
+    writer = csv.DictWriter(usersDB, fieldnames=["id_user","id_time","id_turma", "email", "senha", "nome", "ADM"])
     writer.writeheader()
     for row in usuario_data:
         writer.writerow(row)
@@ -38,11 +38,6 @@ with open("evalDB.csv", "w", newline="", encoding='utf-8') as eval:
         writer.writerow(row)
 
 
-# add turma
-    def adicionar_turma(id_turma, time, turma, cargo):
-        with open('dados.csv', 'a', newline='') as f:
-            writer = csv.writer(f)
-            writer.writerow([id_turma, time, turma, cargo])
 # excl. turma
     def excluir_turma(id_turma):
         with open('dados.csv', 'r', newline='') as f:

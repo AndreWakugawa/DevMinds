@@ -1,4 +1,2 @@
-id_user,email,senha,nome
-2,aaa@adm.com,111,João
-3,caue@adm.com,11,cauê
-4,opa@adm.com,1,poliana
+id_user,id_time,id_turma,email,senha,nome,ADM
+1,0,0,aaa@adm.com,111,João,1
