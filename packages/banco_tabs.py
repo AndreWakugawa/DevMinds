@@ -7,7 +7,7 @@ turma_data = [
 
 #tabela Usuário
 usuario_data = [
-    {"id_user": "1", "id_time": "0", "id_turma": "0", "email": "aaa@adm.com", "senha": "111", "nome": "João", "ADM": "1"}
+    {"id_user": "1", "id_time": "0", "id_turma": "0", "email": "aaa@adm.com", "senha": "111", "nome": "João", "user_level": "1"}
 ]
 
 #tabela Avaliação
@@ -25,7 +25,7 @@ with open("turmasDB.csv", "w", newline="", encoding='utf-8') as f:
     
     # Dados da tabela Usuário
 with open ("usersDB.csv","w",newline="", encoding='utf-8') as usersDB:
-    writer = csv.DictWriter(usersDB, fieldnames=["id_user","id_time","id_turma", "email", "senha", "nome", "ADM"])
+    writer = csv.DictWriter(usersDB, fieldnames=["id_user","id_time","id_turma", "email", "senha", "nome", "user_level"])
     writer.writeheader()
     for row in usuario_data:
         writer.writerow(row)

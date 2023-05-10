@@ -1,6 +1,6 @@
 def eval():
     from Main import os, sys, csv, id, nome # Puxa imports da main
-    filename = os.path.abspath('data_sample/aval_data.csv') # Nome do arquivo
+    filename = os.path.abspath('evalDB.csv') # Nome do arquivo
 
     with open(filename, 'r+', newline='',encoding='utf-8') as aval_csv:
         reader_obj = csv.reader(aval_csv, delimiter=',') # Cria um objeto de leitura para CSV

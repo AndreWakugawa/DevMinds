@@ -10,9 +10,9 @@ def login_check(id, nome):
         email = input('Email: ')
         senha = pw.pwinput(prompt='Senha: ')
         for linha in reader_obj: #Loop até valores das colunas baterem numa linha
-            if linha[1] == email and linha[2] == senha:
+            if linha[3] == email and linha[4] == senha:
                 id = linha[0] # Index id
-                nome = linha[3] # Index nome
+                nome = linha[5] # Index nome
                 cad_csv.seek(0) # Reseta o pointer do arquivo para o início
                 cad_csv.close()
                 return (id, nome) # Retorna info de cadastro
