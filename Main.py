@@ -32,13 +32,13 @@ while True:
             break
     print("Dados de Login ou Senha incorretos, tente novamente")
 
-opcoes_aluno = ['Realizar avaliação', 'Sair']
+opcoes_aluno = ['Realizar avaliação', 'Cadastrar time', 'Sair']
 opcoes_adm = ['Gerenciar cadastros', 'Realizar avaliação', 'Analisar dashboards', 'Sair']
 
 if user_level == 0:
     while True:
         print(f"Olá, {nome}! O que deseja fazer?\n")
-        print(f"1. {opcoes_aluno[0]}\n2. {opcoes_aluno[1]}")
+        print(f"1. {opcoes_aluno[0]}\n2. {opcoes_aluno[1]}\n3. {opcoes_aluno[2]}")
         opcao = input("Insira o número da opção: ")
         if opcao == "1":
             eval()
@@ -46,7 +46,6 @@ if user_level == 0:
             sair = input("Deseja mesmo sair? (s/n)")
             if sair == "s":
                 sys.exit()
-                break
         else:
             print("Opção inválida!")
 

@@ -30,17 +30,26 @@ def add_cad():
         senha = pw.pwinput("Crie uma senha: ")
         conf_senha = pw.pwinput("Confirme sua senha: ")
         if senha == conf_senha:
-            print ("Cadastro bem sucedido!")
             break
         else:
             print("Senha incorreta, tente novamente!")
+
+    while True:
+        turma = input("Insira a turma do aluno: ")
+        if turma.isnumeric():
+            turma = int(turma)
+            user_level = 0
+            print ("Cadastro bem sucedido!")
+            break
+        else:
+            print("Entrada inválida. Por favor, insira um valor numérico para a turma.")
 
     # Inserção das variáveis dentro de uma lista
 
     # Sem um novo arquivo "cadastro.csv" seria criado dentro do CWD (no caso, direto no repo DevMinds).
     with open(csv_path,'a', newline='',encoding='utf-8') as cad_csv: # Abre csv, inserindo uma nova linha
         csv_writer = csv.writer(cad_csv) # Objeto de escrito do csv
-        csv_writer.writerow([id, email, senha, nome])
+        csv_writer.writerow([id, None, turma, email, senha, nome, user_level])
     #evalcad() Desativado devido a alteração no banco. Aparentemente não precisa mais que a evalcad faça o trabalho. Por enquanto, é claro.
 
 def excluir_usuario():
@@ -49,14 +58,14 @@ def excluir_usuario():
     
     confirmacao = input('\n'"Deseja mesmo deletar esse usuário?(Y,N): ")
 
-    if confirmacao == "Y":
+    if confirmacao == "Y" or "y":
         with open('usersDB.csv', 'r', newline='', encoding='utf8') as f:
             reader = csv.reader(f)
             rows = [row for row in reader if row[0] != id_userDelete]   
         with open('usersDB.csv', 'w', newline='', encoding='utf8') as f:
             writer = csv.writer(f)
             writer.writerows(rows)
-    elif confirmacao == "N":
+    elif confirmacao == "N" or "n":
         print('\n'"Função encerrada"'\n')
 
 def buscar_usuario():

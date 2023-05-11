@@ -94,9 +94,7 @@ def eval():
                     break
             else:
                 print('Integrante não encontado, tente novamente.')
-            break
-        else:
-            print('Nome inválido, tente novamente.')
+                break
 
         aval_csv.seek(0)
         avalwriter = csv.writer(aval_csv)

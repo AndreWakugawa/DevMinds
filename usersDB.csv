@@ -1,4 +1,4 @@
 id_user,id_time,id_turma,email,senha,nome,user_level
 1,0,0,aaa@adm.com,111,João,1
 2,0,0,aaa@user.com,111,Cauê,0
-3,caue@adm.com,11,Cauê
+3,0,0,caue@adm.com,11,Cauê,0
