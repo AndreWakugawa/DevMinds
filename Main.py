@@ -10,7 +10,9 @@ import pwinput as pw # Transforma senha em asterisco / pip install pwinput
 #Imports de arquivos
 from packages.login_module import login_check
 from packages.eval_module import eval
+from packages.usersManipu_module import mudartime
 import packages.usersChange_module as uc
+
 
 while True:
     id = []
@@ -55,10 +57,10 @@ elif user_level == 1:
         print(f"1. {opcoes_adm[0]}\n2. {opcoes_adm[1]}\n3. {opcoes_adm[2]}\n4. {opcoes_adm[3]}")
         opcao = input("Insira o número da opção: ")
         if opcao == "1":  #Manipulação de usuário
-            opções_user = ['Cadastrar um usuário.','Procurar um usuário pela ID.','Deletar um usuário.']
+            opções_userM = ['Cadastrar um usuário.','Procurar um usuário pela ID.','Deletar um usuário.','Alterar a qual time um usuário está associado']
             print(f'\n{nome}, o que deseja mudar em relação aos usuários?\n')
-            print (f'1.{opções_user[0]}\n2.{opções_user[1]}\n3.{opções_user[2]}')
-            opções_userSelect = int(input("Insira o número da opção:"))
+            print (f'1.{opções_userM[0]}\n2.{opções_userM[1]}\n3.{opções_userM[2]}\n4.{opções_userM[3]}')
+            opções_userSelect = int(input('\n'"Insira o número da opção:"))
             if opções_userSelect == 1:
                 print('\n'"Bem vindo a função de cadastrar usuário! Se atente aos dados informados."'\n')
                 uc.add_cad() # Funcao cadastro
@@ -66,6 +68,8 @@ elif user_level == 1:
                 uc.buscar_usuario() 
             elif opções_userSelect == 3:
                 uc.excluir_usuario()
+            elif opções_userSelect == 4:
+                mudartime()
             #Fim da manipulação de usuário
         elif opcao == "2":
             eval()
