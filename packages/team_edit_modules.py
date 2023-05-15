@@ -9,20 +9,20 @@ def mudartime():
         else:
             print('\n'"A ID informada não existe, ou o valor do time  informado não é um numero")
     
-    with open('usersDB.csv', 'r', newline='', encoding='utf-8') as f:
+    with open('usersDB.csv', 'r', newline='', encoding='utf-8') as usersDB:
         linhas_nova = []
-        reader = csv.DictReader(f)
+        reader = csv.DictReader(usersDB)
         next(reader)
         for row in reader:
             if row['id_user'] == id_userChange:
                 row['id_time'] = timenovo
                 linhas_nova.append(row)
                 
-    with open('usersDB.csv', 'r', newline='', encoding='utf-8') as f:
-        reader = csv.reader(f)
+    with open('usersDB.csv', 'r', newline='', encoding='utf-8') as usersDB:
+        reader = csv.reader(usersDB)
         rows = [row for row in reader if row[0] != id_userChange] 
-    with open('usersDB.csv', 'w', newline='', encoding='utf-8') as f:
-        writer = csv.writer(f)
+    with open('usersDB.csv', 'w', newline='', encoding='utf-8') as usersDB:
+        writer = csv.writer(usersDB)
         writer.writerows(rows)
 
     with open('usersDB.csv', 'a', newline='', encoding='utf-8') as bdnovo:

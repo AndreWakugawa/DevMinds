@@ -70,7 +70,7 @@ elif user_level == 1:
                 mudartime()
             #Fim da manipulação de usuário
         elif opcao == "2":
-            eval()
+            aval(id_user, nome)
         elif opcao == "3":
             print("\nDashboards em desenvolvimento\n")
         elif opcao == "4":

@@ -12,7 +12,7 @@ usuario_data = [
 
 #tabela Avaliação
 avaliacao_data = [
-    {"id_avaliacao": "1", "id_user": "0", "id_time": "2", "id_turma": "0", "sprint":"3", "criterio1":"", "criterio2":"", "criterio3":"", "criterio4":"", "criterio5":"", "fb1":"","fb2":"","fb3":"","fb4":"","fb5":""},]
+    {"id_avaliacao": "1", "id_user": "1", "id_time": "0", "id_turma": "0", "sprint":"3", "criterio1":"", "criterio2":"", "criterio3":"", "criterio4":"", "criterio5":"", "fb1":"","fb2":"","fb3":"","fb4":"","fb5":""},]
 #Fim dados mockados
 
 # Criação do arquivo CSV

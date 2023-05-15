@@ -2,13 +2,13 @@ def aval(id_user, nome):
     import os, csv
     filename = os.path.abspath('evalDB.csv') # Nome do arquivo
 
-    with open(filename, 'r+', newline='',encoding='utf-8') as aval_csv:
-        reader_obj = csv.reader(aval_csv, delimiter=',') # Cria um objeto de leitura para CSV
+    with open(filename, 'r+', newline='',encoding='utf-8') as evalDB:
+        reader_obj = csv.reader(evalDB, delimiter=',') # Cria um objeto de leitura para CSV
 
         dados = [csvlinha for csvlinha in reader_obj] # reescrita do csv dentro de lista em python
         fb_coluna_index = 10 # Coluna inicial dos feedbacks no aval_data.csv
         crit_coluna_index = 5 # Coluna inicial dos critérios no aval_data.csv
-        aval_csv.seek(0)
+        evalDB.seek(0)
 
         next(reader_obj, None) # Ignora headers
 
@@ -52,7 +52,7 @@ def aval(id_user, nome):
             pergunta = ['se avalia',f'avalia {integrante}']
             if integrante in integrantes_nome or integrante == nome: # Verifica há o integrante no time
                 avaliacoes_fator = []
-                aval_csv.seek(0) # Retorna pointer ao inicio do csv
+                evalDB.seek(0) # Retorna pointer ao inicio do csv
                 for linha_integrante in reader_obj: # Busca linha por linha no csv
                     feedback = ""
                     if integrante == nome: # Verifica se o nome é do próprio usuário
@@ -69,7 +69,7 @@ def aval(id_user, nome):
                                 else:
                                     break
                             except ValueError:
-                                print("Valor inválido\n")  
+                                print("Valor inválido\n")
                         # Feedback caso a avaliação seja entre 1 e 3
                         if int(avaliacao) in range(1,4):
                             feedback_confirm = ""
@@ -99,9 +99,9 @@ def aval(id_user, nome):
                 print('Integrante não encontado, tente novamente.')
                 break
 
-        aval_csv.seek(0)
-        avalwriter = csv.writer(aval_csv)
+        evalDB.seek(0)
+        avalwriter = csv.writer(evalDB)
         avalwriter.writerows(dados)
         # Remove tudo após os writes para manter o arquivo limpo
-        aval_csv.truncate()
+        evalDB.truncate()
         #Avaliação terminada, falta adicao de notas ao csv
