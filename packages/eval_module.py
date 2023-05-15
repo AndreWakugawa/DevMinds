@@ -1,5 +1,5 @@
-def eval():
-    from Main import os, sys, csv, id, nome # Puxa imports da main
+def eval(id_user, nome):
+    import os, csv
     filename = os.path.abspath('evalDB.csv') # Nome do arquivo
 
     with open(filename, 'r+', newline='',encoding='utf-8') as aval_csv:
@@ -18,25 +18,28 @@ def eval():
                         "Conhecimento e Aplicabilidade Técnica",
                         "Entrega de Resultados com Valor Agregado",
                         "Auto-gestão das Atividades"]
-        
-        id_coluna_index = 0
+        integrantes_nome = []
+        integrantes_info = []
+        integrantes_id = {} # dict nome:id_user
+        turma = []
+        time = []
+
+        id_user_index = 1
         for linha in reader_obj: #Loop até valores das colunas baterem numa linha
-            if linha[id_coluna_index] == id:
-                turma = linha[2] # index coluna turma
-                time = linha[3] # index coluna time
-                print(f"\nTurma: {turma} \nTime: {time}") # Print de sua turma e time
+            if linha[id_user_index] == id_user:
+                turma = linha[3] # index coluna turma
+                time = linha[2] # index coluna time
+                print(f"\nTurma: {turma} \nTime: {time}") # Print de sua turma e time        
 
-                integrantes_nome = []
-                integrantes_info = []
-                integrantes_id = {} # dict nome:id_user
-                
-                aval_csv.seek(0)
-                for linha_integrante in reader_obj:
-                    if linha_integrante[2] == turma and linha_integrante[3] == time: #Checa se turma e time batem
-                        integrantes_info.append(linha_integrante) # Junta nomes em lista
-                        integrantes_nome.append(linha_integrante[1])
-                        integrantes_id[linha_integrante[1]] = linha_integrante[0]
-
+        with open('usersDB.csv', 'r', newline='', encoding='utf-8') as user_csv:
+            user_reader = csv.reader(user_csv)
+            next(user_reader, None)
+            for linha_integrante in user_reader:
+                if linha_integrante[2] == turma and linha_integrante[1] == time: #Checa se turma e time batem
+                    integrantes_info.append(linha_integrante) # Junta nomes em lista
+                    integrantes_nome.append(linha_integrante[5])
+                    integrantes_id[linha_integrante[5]] = linha_integrante[0]
+        
         print("\nIntegrantes do Time:")
         for integrante_nome in integrantes_nome: # Print dos integrantes do time
             if integrante_nome == nome:
@@ -77,7 +80,7 @@ def eval():
                                     print ("Tente novamente:")
                         # Registro do feedback
                         for i, csvlinha in enumerate(dados):
-                            if csvlinha[id_coluna_index] == integrantes_id[integrante] and fb_coluna_index <=14:
+                            if csvlinha[id_user_index] == integrantes_id[integrante] and fb_coluna_index <=14:
                                 reg = csvlinha[fb_coluna_index]
                                 if reg == "":
                                     dados[i][fb_coluna_index] = feedback

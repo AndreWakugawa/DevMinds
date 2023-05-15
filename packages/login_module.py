@@ -1,4 +1,4 @@
-def login_check(id, nome):
+def login_check(id_user, nome):
     import os, sys, csv
     import pwinput as pw 
     filename = os.path.abspath('usersDB.csv') # Nome do arquivo
@@ -11,11 +11,11 @@ def login_check(id, nome):
         senha = pw.pwinput(prompt='Senha: ')
         for linha in reader_obj: #Loop até valores das colunas baterem numa linha
             if linha[3] == email and linha[4] == senha:
-                id = linha[0] # Index id
+                id_user = linha[0] # Index id_user
                 nome = linha[5] # Index nome
                 cad_csv.seek(0) # Reseta o pointer do arquivo para o início
                 cad_csv.close()
-                return (id, nome) # Retorna info de cadastro
+                return (id_user, nome) # Retorna info de cadastro
         cad_csv.seek(0) # Reseta o pointer do arquivo para o início
         cad_csv.close()
         return False

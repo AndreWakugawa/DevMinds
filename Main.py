@@ -13,20 +13,19 @@ from packages.eval_module import eval
 from packages.usersManipu_module import mudartime
 import packages.usersChange_module as uc
 
-
 while True:
-    id = []
+    id_user = []
     nome = []
-    login_info = login_check(id, nome)
+    login_info = login_check(id_user, nome)
     if login_info:
-        id, nome = login_info
+        id_user, nome = login_info
         file_path = os.path.abspath('usersDB.csv')
 
         with open(file_path, mode='r') as csv_file:
             level_reader = csv.reader(csv_file, delimiter=',')
             next(level_reader, None) # Ignora headers
             for linha in level_reader:
-                if linha[0] == id:
+                if linha[0] == id_user:
                     if linha[6] == '1':
                         user_level = 1
                     elif linha[6] == '0':
@@ -34,16 +33,16 @@ while True:
             break
     print("Dados de Login ou Senha incorretos, tente novamente")
 
-opcoes_aluno = ['Realizar avaliação', 'Cadastrar time', 'Sair']
+opcoes_aluno = ['Realizar avaliação', 'Sair']
 opcoes_adm = ['Gerenciar cadastros', 'Realizar avaliação', 'Analisar dashboards', 'Sair']
 
 if user_level == 0:
     while True:
         print(f"Olá, {nome}! O que deseja fazer?\n")
-        print(f"1. {opcoes_aluno[0]}\n2. {opcoes_aluno[1]}\n3. {opcoes_aluno[2]}")
+        print(f"1. {opcoes_aluno[0]}\n2. {opcoes_aluno[1]}")
         opcao = input("Insira o número da opção: ")
         if opcao == "1":
-            eval()
+            eval(id_user, nome)
         elif opcao == "2":
             sair = input("Deseja mesmo sair? (s/n)")
             if sair == "s":
