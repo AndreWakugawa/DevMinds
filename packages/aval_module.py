@@ -1,4 +1,4 @@
-def eval(id_user, nome):
+def aval(id_user, nome):
     import os, csv
     filename = os.path.abspath('evalDB.csv') # Nome do arquivo
 

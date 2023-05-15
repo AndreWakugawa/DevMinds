@@ -8,10 +8,10 @@ import uuid
 import pwinput as pw # Transforma senha em asterisco / pip install pwinput
 
 #Imports de arquivos
-from packages.login_module import login_check
-from packages.eval_module import eval
-from packages.usersManipu_module import mudartime
-import packages.usersChange_module as uc
+from packages.login_auth_module import login_check
+from packages.aval_module import aval
+from packages.team_edit_modules import mudartime
+import packages.user_edit_modules as uc
 
 while True:
     id_user = []
@@ -42,7 +42,7 @@ if user_level == 0:
         print(f"1. {opcoes_aluno[0]}\n2. {opcoes_aluno[1]}")
         opcao = input("Insira o número da opção: ")
         if opcao == "1":
-            eval(id_user, nome)
+            aval(id_user, nome)
         elif opcao == "2":
             sair = input("Deseja mesmo sair? (s/n)")
             if sair == "s":

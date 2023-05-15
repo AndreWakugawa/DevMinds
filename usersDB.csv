@@ -3,3 +3,4 @@ id_user,id_time,id_turma,email,senha,nome,user_level
 2,0,0,aaa@user.com,111,Cauê,0
 3,0,0,caue@adm.com,11,Cauê,0
 4,,2,bbb@gmail.com,111,222,0
+5,,1,rrr@outlook.com,aaa,mingau,0

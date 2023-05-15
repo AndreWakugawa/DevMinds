@@ -1,7 +1,6 @@
 def add_cad():
     import re,os, sys, csv
     import pwinput as pw
-    from packages.evalcad_module import evalcad
     csv_path = os.path.abspath('usersDB.csv') # Nome do arquivo
     
     senha = None
