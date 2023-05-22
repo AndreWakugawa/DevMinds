@@ -36,17 +36,16 @@ def aval(id_user, nome):
                         "Conhecimento e Aplicabilidade Técnica",
                         "Entrega de Resultados com Valor Agregado",
                         "Auto-gestão das Atividades"]
-        newidAval = None
 
         with open('evalDB.csv', 'r',encoding='utf-8') as addID:
-            readeridnew = csv.reader(addID)
-            idnew = 0
-            for idold,row in enumerate(readeridnew):
+            readerid_aval_new = csv.reader(addID)
+            id_aval_new = 0
+            for idold,row in enumerate(readerid_aval_new):
                 if idold == 0:
                     continue
                 last_id = int(row[0])
-            idnew = last_id + 1
-            inputDB.append(idnew)
+            id_aval_new = last_id + 1
+            inputDB.append(id_aval_new)
 
         
         
@@ -92,10 +91,10 @@ def aval(id_user, nome):
                                 else:
                                     feedbacks.append(feedback)  # Registro do feedback
                         else:
-                            feedback = None
+                            feedback = ""
                             feedbacks.append(feedback)# Registro do feedback vazio       
-                        print(inputDB)
-                        # Nos appends juntam-se as notas dadas em uma lista
+
+                    # Nos appends juntam-se as notas dadas em uma lista
                     inputDB.append(int(integrantes_id[integrante]))
                     inputDB.append(int(time))
                     inputDB.append(int(turma))
@@ -105,6 +104,7 @@ def aval(id_user, nome):
                     print("Avaliação Finalizada!!!")
                     print(f'{integrante} foi avaliado(a)!!\n{avaliacoes}') # Visualiza notas dadas 
                     break
+                break
             else:
                 print('Integrante não encontado, tente novamente.')
                 break
@@ -112,7 +112,6 @@ def aval(id_user, nome):
 
     # Criar uma única string com os elementos separados por vírgulas
     csv_row = ','.join(row)
-
     # Gravar a linha no arquivo CSV
     with open('evalDB.csv', 'a', newline='', encoding='utf-8') as cad_csv:
         cad_csv.write(csv_row + '\n')
