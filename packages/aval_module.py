@@ -1,6 +1,6 @@
 def aval(id_user, nome):
     import os, csv
-    filename = os.path.abspath('evalDB.csv') # Nome do arquivo
+    filename = os.path.abspath('../evalDB.csv') # Nome do arquivo
 
     with open(filename, 'r+', newline='',encoding='utf-8') as evalDB:
         reader_obj = csv.reader(evalDB, delimiter=',') # Cria um objeto de leitura para CSV

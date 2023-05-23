@@ -31,7 +31,7 @@ with open ("usersDB.csv","w",newline="", encoding='utf-8') as usersDB:
         writer.writerow(row)
     #Dados tabela Avaliação
 
-with open("evalDB.csv", "w", newline="", encoding='utf-8') as eval:
+with open("../evalDB.csv", "w", newline="", encoding='utf-8') as eval:
     writer = csv.DictWriter(eval, fieldnames=["id_avaliacao","id_user","id_time","id_turma","sprint","criterio1","criterio2","criterio3","criterio4","criterio5","fb1","fb2","fb3","fb4","fb5"])
     writer.writeheader()
     for row in avaliacao_data:
