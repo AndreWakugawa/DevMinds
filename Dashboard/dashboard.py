@@ -8,7 +8,7 @@ from notas_alunos import obter_notas_alunos
 from graficos import exibir_graficos
 from medias import calcular_media_sala
 
-csv_path = os.path.abspath('../evalDB.csv')
+csv_path = os.path.abspath('evalDB.csv')
 media_sala = calcular_media_sala(csv_path)
 notas_alunos = obter_notas_alunos(csv_path)
 
