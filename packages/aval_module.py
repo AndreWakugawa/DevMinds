@@ -95,12 +95,13 @@ def aval(id_user, nome):
                             feedbacks.append(feedback)# Registro do feedback vazio       
 
                     # Nos appends juntam-se as notas dadas em uma lista
-                    inputDB.append(int(integrantes_id[integrante]))
-                    inputDB.append(int(time))
-                    inputDB.append(int(turma))
-                    inputDB.append("Ainda não implementado")
+                    inputDB.append(int(integrantes_id[integrante])) #Adição do avaliado na linha virtual a avaliação.
+                    inputDB.append(int(time)) #Adição do time do avaliado na linha virtual.
+                    inputDB.append(int(turma)) #Adição da turma do avaliado na linha virtual.
+                    inputDB.append("Ainda não implementado") #É a adição da sprint, quando terminarem essa função de sprints, é só substituir aqui para adicionar na ordem correta.
                     inputDB.extend(avaliacoes) #Adição da lista avaliacoes na linha virtual.
                     inputDB.extend(feedbacks) #Adição da lista feedbackas na linha virtual.
+                    inputDB.append(id_user) #Adição do avaliador na linha da avaliação
                     print("Avaliação Finalizada!!!")
                     print(f'{integrante} foi avaliado(a)!!\n{avaliacoes}') # Visualiza notas dadas 
                     break
