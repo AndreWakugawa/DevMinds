@@ -18,27 +18,32 @@ def calcular_media_sala(csv_path):
 
     return media_sala
 
-def calcular_medias_times(csv_path):
-    medias_times = {}
+def medTime(turma_escolhida):
+    filename = os.path.abspath('evalDB.csv') 
+    turmas = []
 
-    with open(csv_path, 'r') as file:
-        reader = csv.reader(file)
+    with open(filename, 'r', newline='', encoding='utf-8') as usersDB:
+        reader = csv.DictReader(usersDB)
         next(reader)
-
         for row in reader:
-            id_time = int(row[2])
-            notas = []
-            for i in range(5, 10):
-                notas.append(int(row[i]))
+            id_turma = int(row['id_turma'])
+            id_time = int(row['id_time'])
+            criterios = [int(row[f'criterio{i}']) for i in range(1, 6)]
 
-            if id_time not in medias_times:
-                medias_times[id_time] = []
+            if id_turma == turma_escolhida:  # Filtra apenas a turma desejada
+                turma_atual = None
+                for turma in turmas:
+                    if turma['id_turma'] == id_turma:
+                        turma_atual = turma
+                        break
 
-            if notas:
-                medias_times[id_time].append(notas)
+                if turma_atual is None:
+                    turma_atual = {'id_turma': id_turma, 'times': {}}
+                    turmas.append(turma_atual)
 
-    for id_time, notas_times in medias_times.items():
-        notas_times = np.array(notas_times)
-        medias_times[id_time] = np.mean(notas_times, axis=0)
+                if id_time not in turma_atual['times']:
+                    turma_atual['times'][id_time] = criterios
+                else:
+                    turma_atual['times'][id_time] = [sum(vals) // len(vals) for vals in zip(turma_atual['times'][id_time], criterios)]
 
-    return medias_times
+    return turmas
