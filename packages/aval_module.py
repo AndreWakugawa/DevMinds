@@ -2,43 +2,52 @@ def aval(id_user, nome):
     import os, csv
     filename = os.path.abspath('evalDB.csv') # Nome do arquivo
 
-    with open(filename, 'r+', newline='',encoding='utf-8') as evalDB:
-        reader_obj = csv.reader(evalDB, delimiter=',') # Cria um objeto de leitura para CSV
+    integrantes_nome = []
+    integrantes_info = []
+    integrantes_id = {} # dict nome:id_user
+    turma = []
+    time = []
+    inputDB = [] #A nova linha inputada no DB. Obrigatoriamente segue a ordem dos Headers existentes lá.
 
-        dados = [csvlinha for csvlinha in reader_obj] # reescrita do csv dentro de lista em python
-        fb_coluna_index = 10 # Coluna inicial dos feedbacks no aval_data.csv
-        crit_coluna_index = 5 # Coluna inicial dos critérios no aval_data.csv
-        evalDB.seek(0)
+    with open('usersDB.csv', 'r', newline='', encoding='utf-8') as user_csv:
+        user_reader = csv.reader(user_csv)
+        next(user_reader, None)
 
-        next(reader_obj, None) # Ignora headers
+        for linha in user_reader: #Loop até valores das colunas baterem numa linha
+            if linha[0] == id_user:
+                turma = linha[2] # index coluna turma
+                time = linha[1] # index coluna time
+                print(f"\nTurma: {turma} \nTime: {time}") # Print de sua turma e time        
+        user_csv.seek(0)
+        for linha_integrante in user_reader:
+            if linha_integrante[2] == turma and linha_integrante[1] == time: #Checa se turma e time batem
+                integrantes_info.append(linha_integrante[0]) # Junta IDs em lista
+                integrantes_nome.append(linha_integrante[5]) # Junta nomes em lista ???
+                integrantes_id[linha_integrante[5]] = linha_integrante[0]   # Cria uma lista assim : {'Nome': 'ID'}. Exemplo {'Cleber': '2'}
+
+            #dados = [csvlinha for csvlinha in reader_obj] # reescrita do csv dentro de lista em python
+            #fb_coluna_index = 10 # Coluna inicial dos feedbacks no aval_data.csv
+            #crit_coluna_index = 5 # Coluna inicial dos critérios no aval_data.csv
 
         avaliacoes = []
+        feedbacks = []
         fatores_chave = ["Comunicação e Trabalho em Equipe",
                         "Engajamento e Pró-atividade",
                         "Conhecimento e Aplicabilidade Técnica",
                         "Entrega de Resultados com Valor Agregado",
                         "Auto-gestão das Atividades"]
-        integrantes_nome = []
-        integrantes_info = []
-        integrantes_id = {} # dict nome:id_user
-        turma = []
-        time = []
 
-        id_user_index = 1
-        for linha in reader_obj: #Loop até valores das colunas baterem numa linha
-            if linha[id_user_index] == id_user:
-                turma = linha[3] # index coluna turma
-                time = linha[2] # index coluna time
-                print(f"\nTurma: {turma} \nTime: {time}") # Print de sua turma e time        
+        with open('evalDB.csv', 'r',encoding='utf-8') as addID:
+            readerid_aval_new = csv.reader(addID)
+            id_aval_new = 0
+            for idold,row in enumerate(readerid_aval_new):
+                if idold == 0:
+                    continue
+                last_id = int(row[0])
+            id_aval_new = last_id + 1
+            inputDB.append(id_aval_new)
 
-        with open('usersDB.csv', 'r', newline='', encoding='utf-8') as user_csv:
-            user_reader = csv.reader(user_csv)
-            next(user_reader, None)
-            for linha_integrante in user_reader:
-                if linha_integrante[2] == turma and linha_integrante[1] == time: #Checa se turma e time batem
-                    integrantes_info.append(linha_integrante) # Junta nomes em lista
-                    integrantes_nome.append(linha_integrante[5])
-                    integrantes_id[linha_integrante[5]] = linha_integrante[0]
+        
         
         print("\nIntegrantes do Time:")
         for integrante_nome in integrantes_nome: # Print dos integrantes do time
@@ -51,9 +60,8 @@ def aval(id_user, nome):
             integrante = input('\nQuem você deseja avaliar?\n')
             pergunta = ['se avalia',f'avalia {integrante}']
             if integrante in integrantes_nome or integrante == nome: # Verifica há o integrante no time
-                avaliacoes_fator = []
-                evalDB.seek(0) # Retorna pointer ao inicio do csv
-                for linha_integrante in reader_obj: # Busca linha por linha no csv
+                user_csv.seek(0) # Retorna pointer ao inicio do csv
+                for linha_integrante in user_reader: # Busca linha por linha no csv
                     feedback = ""
                     if integrante == nome: # Verifica se o nome é do próprio usuário
                         pergunta_index = 0
@@ -70,6 +78,8 @@ def aval(id_user, nome):
                                     break
                             except ValueError:
                                 print("Valor inválido\n")
+                        avaliacoes.append(int(avaliacao))
+                        #avaliacoes.append(avaliacao)
                         # Feedback caso a avaliação seja entre 1 e 3
                         if int(avaliacao) in range(1,4):
                             feedback_confirm = ""
@@ -78,30 +88,31 @@ def aval(id_user, nome):
                                 feedback_confirm = input("Você confirma o feedback?(y/n)\n")
                                 if feedback_confirm != "y":
                                     print ("Tente novamente:")
-                        # Registro do feedback
-                        for i, csvlinha in enumerate(dados):
-                            if csvlinha[id_user_index] == integrantes_id[integrante] and fb_coluna_index <=14:
-                                reg = csvlinha[fb_coluna_index]
-                                if reg == "":
-                                    dados[i][fb_coluna_index] = feedback
                                 else:
-                                    if feedback != "":
-                                        dados[i][fb_coluna_index] = f'{dados[i][fb_coluna_index]},{feedback}'
-                        feedback = ""
-                        fb_coluna_index += 1
-                        # Nos appends juntam-se as notas dadas em uma lista
-                        avaliacoes_fator.append(avaliacao)
-                    avaliacoes.append(avaliacoes_fator)
+                                    feedbacks.append(feedback)  # Registro do feedback
+                        else:
+                            feedback = ""
+                            feedbacks.append(feedback)# Registro do feedback vazio       
+
+                    # Nos appends juntam-se as notas dadas em uma lista
+                    inputDB.append(int(integrantes_id[integrante])) #Adição do avaliado na linha virtual a avaliação.
+                    inputDB.append(int(time)) #Adição do time do avaliado na linha virtual.
+                    inputDB.append(int(turma)) #Adição da turma do avaliado na linha virtual.
+                    inputDB.append("Ainda não implementado") #É a adição da sprint, quando terminarem essa função de sprints, é só substituir aqui para adicionar na ordem correta.
+                    inputDB.extend(avaliacoes) #Adição da lista avaliacoes na linha virtual.
+                    inputDB.extend(feedbacks) #Adição da lista feedbackas na linha virtual.
+                    inputDB.append(id_user) #Adição do avaliador na linha da avaliação
                     print("Avaliação Finalizada!!!")
                     print(f'{integrante} foi avaliado(a)!!\n{avaliacoes}') # Visualiza notas dadas 
                     break
+                break
             else:
                 print('Integrante não encontado, tente novamente.')
                 break
+    row = [str(item) for item in inputDB]
 
-        evalDB.seek(0)
-        avalwriter = csv.writer(evalDB)
-        avalwriter.writerows(dados)
-        # Remove tudo após os writes para manter o arquivo limpo
-        evalDB.truncate()
-        #Avaliação terminada, falta adicao de notas ao csv
+    # Criar uma única string com os elementos separados por vírgulas
+    csv_row = ','.join(row)
+    # Gravar a linha no arquivo CSV
+    with open('evalDB.csv', 'a', newline='', encoding='utf-8') as cad_csv:
+        cad_csv.write(csv_row + '\n')
