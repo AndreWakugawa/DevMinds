@@ -54,6 +54,13 @@ def add_cad():
         csv_writer = csv.writer(cad_csv) # Objeto de escrito do csv
         csv_writer.writerow([id, None, turma, email, hashed_password, nome, user_level])
     #evalcad() Desativado devido a alteração no banco. Aparentemente não precisa mais que a evalcad faça o trabalho. Por enquanto, é claro.
+    
+    # Verificar se a senha é igual à senha armazenada no banco de dados
+        hashed_password_input = hashlib.sha256(senha.encode()).hexdigest()
+        if hashed_password_input == hashed_password:
+            print('\n'"Senha correta. Cadastro bem sucedido!")
+        else:
+            print('\n'"Senha incorreta. Cadastro não realizado.")
 
 def excluir_usuario():
     import csv
