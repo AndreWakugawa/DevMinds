@@ -51,7 +51,11 @@ def add_cad():
     with open(csv_path,'a', newline='',encoding='utf-8') as cad_csv:
         csv_writer = csv.writer(cad_csv)
         csv_writer.writerow([id, None, turma, email, hashed_password, nome, user_level])
-        
+        hashed_password_input = hashlib.sha256(senha.encode()).hexdigest()
+        if hashed_password_input == hashed_password:
+            print('\nSenha correta. Cadastro bem sucedido!')
+        else:
+            print('\nSenha incorreta. Cadastro não realizado.')
 
 def excluir_usuario():
 
@@ -82,6 +86,5 @@ def buscar_usuario():
         
         for row in reader:
             if row[0] == id_userSearch:
-                print('\n'"Aqui estão os dados do usuário selecionado: ")
+                print('\nAqui estão os dados do usuário selecionado: ')
                 print('\n',{cabecalhos[i]: row[i] for i in range(len(cabecalhos))})
-    

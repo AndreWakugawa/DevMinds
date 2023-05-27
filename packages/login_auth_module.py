@@ -1,9 +1,9 @@
-import os, csv
-import pwinput as pw
+import os, sys, csv
+import pwinput as pw 
+import hashlib
 
 
 def login_check(id_user, nome, turma):
-
 
     with open(os.path.abspath('usersDB.csv'),'r', newline='',encoding='utf-8') as usersDB:
         reader_obj = csv.reader(usersDB, quoting=csv.QUOTE_NONE)
@@ -12,15 +12,24 @@ def login_check(id_user, nome, turma):
         email = input('Email: ')
         senha = pw.pwinput(prompt='Senha: ')
         print()
-
+        hashed_password_input = hashlib.sha256(senha.encode()).hexdigest()
+        
         for linha in reader_obj:
-            if linha[3] == email and linha[4] == senha:
+            if linha[3] == email and linha[4] == hashed_password_input:
                 id_user = linha[0]
                 turma = linha[2]
                 nome = linha[5]
                 usersDB.seek(0)
                 usersDB.close()
                 return (id_user, nome, turma)
+            elif linha[3] == email and linha[4] == senha:
+                id_user = linha[0]
+                turma = linha[2]
+                nome = linha[5]
+                usersDB.seek(0)
+                usersDB.close()
+                return (id_user, nome, turma)
+            
         
         usersDB.seek(0)
         usersDB.close()
