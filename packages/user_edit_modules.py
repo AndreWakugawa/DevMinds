@@ -1,6 +1,6 @@
 import re,os,csv
 import pwinput as pw
-
+import hashlib
 
 def add_cad():
 
@@ -32,6 +32,7 @@ def add_cad():
     while True:
         senha = pw.pwinput("Crie uma senha: ")
         conf_senha = pw.pwinput("Confirme sua senha: ")
+        hashed_password = hashlib.sha256(senha.encode()).hexdigest()
         if senha == conf_senha:
             break
         else:
@@ -47,11 +48,10 @@ def add_cad():
         else:
             print("\nEntrada inválida. Por favor, insira um valor numérico para a turma.")
 
-    with open(csv_path,'r+', newline='',encoding='utf-8') as cad_csv:
+    with open(csv_path,'a', newline='',encoding='utf-8') as cad_csv:
         csv_writer = csv.writer(cad_csv)
-        cad_csv.seek(0, 2)
-        csv_writer.writerow([id, None, turma, email, senha, nome, user_level])
-
+        csv_writer.writerow([id, None, turma, email, hashed_password, nome, user_level])
+        
 
 def excluir_usuario():
 
