@@ -1,3 +1,5 @@
+import hashlib
+
 def add_cad():
     import re,os, sys, csv
     import pwinput as pw
@@ -28,6 +30,8 @@ def add_cad():
     while True:
         senha = pw.pwinput("Crie uma senha: ")
         conf_senha = pw.pwinput("Confirme sua senha: ")
+        # Criptografia de senha vindo da hashlib.
+        hashed_password = hashlib.sha256(senha.encode()).hexdigest()
         if senha == conf_senha:
             break
         else:
@@ -48,7 +52,7 @@ def add_cad():
     # Sem um novo arquivo "cadastro.csv" seria criado dentro do CWD (no caso, direto no repo DevMinds).
     with open(csv_path,'a', newline='',encoding='utf-8') as cad_csv: # Abre csv, inserindo uma nova linha
         csv_writer = csv.writer(cad_csv) # Objeto de escrito do csv
-        csv_writer.writerow([id, None, turma, email, senha, nome, user_level])
+        csv_writer.writerow([id, None, turma, email, hashed_password, nome, user_level])
     #evalcad() Desativado devido a alteração no banco. Aparentemente não precisa mais que a evalcad faça o trabalho. Por enquanto, é claro.
 
 def excluir_usuario():

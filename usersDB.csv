@@ -1,3 +1,3 @@
 id_user,id_time,id_turma,email,senha,nome,user_level
 1,1,2,aaa@adm.com,111,João,1
-2,1,2,user1@user.com,111,Cleber,0
+2,1,2,user1@user.com,111,Cleber,03,,0,teste@criptografia.com,d93449f3e5b4bc1fb096a29c2fe7cb71b2694f1436f738741c35950fdb36fbaf,teste,0
