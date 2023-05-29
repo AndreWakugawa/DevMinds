@@ -13,54 +13,34 @@ fatores_chave = ["Comunicação e Trabalho em Equipe",
                 "Conhecimento e Aplicabilidade Técnica",
                 "Entrega de Resultados com Valor Agregado",
                 "Auto-gestão das Atividades"]
+def obter_notas_alunos(csv_path, id_aluno):
+    notas_por_id = {}
+    turma_aluno = None
 
-def login_check():
-    filename = os.path.abspath('usersDB.csv')  # Nome do arquivo
+    with open(csv_path, "r") as file:
+        csv_reader = csv.reader(file)
+        next(csv_reader)
 
-    with open(filename, 'r', newline='', encoding='utf-8') as usersDB:
-        reader_obj = csv.reader(usersDB, quoting=csv.QUOTE_NONE)
-        print('\nBem vindo ao eVAL360!\n'
-              'Antes de acessar, por favor faça seu login\n')
-        email = input('Email: ')
-        senha = pw.pwinput(prompt='Senha: ')
-        for linha in reader_obj:
-            if linha[3] == email and linha[4] == senha:
-                id_user = linha[0]
-                nome = linha[5]
-                usersDB.close()
-                return (id_user, nome)
-        usersDB.seek(0)
-        usersDB.close()
-        return False
-    
-aluno_id, nome = login_check()
+        for row in csv_reader:
+            id_aluno_csv = int(row[1])
+            time = int(row[2])
+            turma = int(row[3])
+            notas = [int(row[i]) if row[i] else 0 for i in range(5, 10)]
 
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
+            if id_aluno_csv == id_aluno:
+                turma_aluno = turma
 
-labels = [textwrap.fill(criterio, 12) for criterio in fatores_chave]
+            if turma == turma_aluno:
+                if id_aluno_csv in notas_por_id:
+                    notas_por_id[id_aluno_csv]["notas"].append(notas)
+                else:
+                    notas_por_id[id_aluno_csv] = {"notas": [notas], "time": time, "turma": turma}
 
-csv_path = os.path.abspath('eValDB.csv')
-notas_alunos = obter_notas_alunos(csv_path)
+    return notas_por_id
 
-media_sala = calcular_media_sala(csv_path)
-cores_sala = np.where(media_sala >= 4, '#1B63AB', np.where(media_sala < 3, '#5C6065', '#1B63AB'))
-ax1.bar(labels, media_sala, color=cores_sala, alpha=0.5)
-ax1.set_ylim(0, 5)
-ax1.set_xticks(range(len(labels)))
-ax1.set_xticklabels(labels, fontsize=8)
-ax1.set_title('Média da Sala')
+id_aluno = int(input("ID: "))
 
-if aluno_id in notas_alunos:
-    notas_aluno = np.mean(notas_alunos[aluno_id]["notas"], axis=0)
-    cores_aluno = np.where(notas_aluno >= 4, '#1B63AB', np.where(notas_aluno <= 3, '#5C6065', '#1B63AB'))
-    ax2.bar(labels, notas_aluno, color=cores_aluno, alpha=0.5)
-    ax2.set_ylim(0, 5)
-    ax2.set_xticks(range(len(labels)))
-    ax2.set_xticklabels(labels, fontsize=8)
-    ax2.set_title(f'Nota do Aluno {aluno_id}')
-else:
-    ax2.text(0.5, 0.5, 'Aluno não encontrado', horizontalalignment='center', verticalalignment='center',
-                transform=ax2.transAxes, fontsize=12)
+csv_path = os.path.abspath('evalDB.csv')
+notas_por_id = obter_notas_alunos(csv_path, id_aluno)
 
-plt.tight_layout()
-plt.show()
+print(notas_por_id)
