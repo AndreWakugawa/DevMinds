@@ -47,3 +47,24 @@ def medTime(turma_escolhida):
                     turma_atual['times'][id_time] = [sum(vals) // len(vals) for vals in zip(turma_atual['times'][id_time], criterios)]
 
     return turmas
+
+def alunoxtime(csv_path, turma_escolhida, time_escolhido):
+    with open(csv_path, "r") as file:
+        csv_reader = csv.reader(file)
+        next(csv_reader)
+
+        notas_alunos = []
+        notas_alunos_dict = {}
+
+        for index, row in enumerate(csv_reader):
+            id_turma = int(row[3])
+            id_time = int(row[2])
+            if id_turma == turma_escolhida and id_time == time_escolhido:
+                notas = [int(row[i]) if row[i] else 0 for i in range(5, 10)]
+                notas_alunos.append(notas)
+                notas_alunos_dict[index] = notas
+
+        notas_alunos = np.array(notas_alunos)
+        media_time = np.mean(notas_alunos, axis=0)
+
+    return media_time, notas_alunos_dict

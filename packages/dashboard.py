@@ -19,17 +19,20 @@ while True:
         print("ID do aluno não pode estar vazio. Por favor, digite um valor válido.")
         continue
     exibir_graficos(int(aluno_id))
-    opcao = str(input("O que deseja fazer?\n\n(0) Visualizar outro aluno\n(1) Sair\n\nDigite aqui: "))
-    if opcao.strip() == "":
-        print("Opção inválida. Por favor, digite um valor válido.")
-        continue
-    if opcao.isdigit():
-        opcao = int(opcao)
-        if opcao == 0:
+    while True:
+        opcao = input("\nO que deseja fazer?\n(0) Visualizar aluno\n(1) Sair\n")
+        if opcao.strip() == "":
+            print("Opção inválida. Por favor, digite um valor válido.")
             continue
-        elif opcao == 1:
-            break
+        if opcao.isdigit():
+            if opcao == '0':
+                break
+            elif opcao == '1':
+                break
+            else:
+                print("Opção inválida. Digite 0 para sair ou 1 para continuar.")
         else:
-            print("Opção inválida. Digite 0 para sair ou 1 para continuar.")
-    else:
-        print("Valor inválido.")
+            print("Valor inválido.")
+    
+    if opcao == '1':
+        break
