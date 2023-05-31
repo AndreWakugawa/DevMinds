@@ -1,2 +1,3 @@
-id_turma,id_time,turma,cargo
-2,2,Turma 1,Professor
+id_turma,turma_nome,sprint_init_date,sprint_len,sprint_qtd
+2,PHP,2023-05-25 23:59:59,10,4
+3,SQL,,,
