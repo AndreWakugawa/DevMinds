@@ -11,10 +11,14 @@ import pwinput as pw # Transforma senha em asterisco / pip install pwinput
 from packages.login_auth_module import login_check
 from packages.aval_module import aval
 from packages.team_edit_modules import mudartime
+from packages.dashboard_module import dash_adm
+from packages.dashboard2_module import dash_times
+from packages.dashboard3_module import dash_cleber
+from packages.dashboard4_module import dash_user, dash_time
 import packages.user_edit_modules as uc
 
 while True:
-    id_user = []
+    id_user = None
     nome = []
     login_info = login_check(id_user, nome)
     if login_info:
@@ -33,17 +37,26 @@ while True:
             break
     print("Dados de Login ou Senha incorretos, tente novamente")
 
-opcoes_aluno = ['Realizar avaliação', 'Sair']
+opcoes_aluno = ['Realizar avaliação', 'Seu Dashboard', 'Sair']
 opcoes_adm = ['Gerenciar cadastros', 'Realizar avaliação', 'Analisar dashboards', 'Sair']
-
+opcoes_dash = ['Você X Time', 'Voce X Turma']
+opcoes_dash_adm = ['Aluno X Turma', 'Comparação de times', 'Aluno x Time']
 if user_level == 0:
     while True:
         print(f"Olá, {nome}! O que deseja fazer?\n")
-        print(f"1. {opcoes_aluno[0]}\n2. {opcoes_aluno[1]}")
+        print(f"1. {opcoes_aluno[0]}\n2. {opcoes_aluno[1]}\n3. {opcoes_aluno[2]}")
         opcao = input("Insira o número da opção: ")
         if opcao == "1":
             aval(id_user, nome)
         elif opcao == "2":
+            dash = input(f"1. {opcoes_dash[0]}\n2. {opcoes_dash[1]}\nInsira o número da opção: ")
+            if dash == '1':
+                dash_time(id_user)
+            elif dash == '2':
+                dash_user(id_user)
+            else:
+                print("Opção inválida")
+        elif opcao == "3":
             sair = input("Deseja mesmo sair? (s/n)")
             if sair == "s":
                 sys.exit()
@@ -72,7 +85,15 @@ elif user_level == 1:
         elif opcao == "2":
             aval(id_user, nome)
         elif opcao == "3":
-            print("\nDashboards em desenvolvimento\n")
+            dash = input(f"1. {opcoes_dash_adm[0]}\n2. {opcoes_dash_adm[1]}\n3. {opcoes_dash_adm[2]}\nInsira o número da opção: ")
+            if dash == '1':
+                dash_adm()
+            elif dash == '2':
+                dash_times()
+            elif dash == '3':
+                dash_cleber()
+            else:
+                print("Opção inválida")
         elif opcao == "4":
             sair = input("Deseja mesmo sair? (s/n)")
             if sair == "s":

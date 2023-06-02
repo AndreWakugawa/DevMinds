@@ -3,8 +3,8 @@ import textwrap
 import numpy as np
 import os
 
-from notas_alunos import obter_notas_alunos
-from medias import calcular_media_sala
+from packages.notas_alunos_module import obter_notas_alunos
+from packages.medias_module import calcular_media_sala
 
 fatores_chave = ["Comunicação e Trabalho em Equipe",
                 "Engajamento e Pró-atividade",

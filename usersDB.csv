@@ -1,6 +1,6 @@
 id_user,id_time,id_turma,email,senha,nome,user_level
-1,1,0,aaa@adm.com,111,João,0                              
-2,1,0,Carlos@user.com,Senha123,Carlos,0   
+1,1,0,aaa@adm.com,111,João,1
+2,1,0,Carlos@user.com,Senha123,Carlos,0
 3,2,0,Ana@user.com,Senha456,Ana,0
 4,2,0,Marcos@user.com,Senha789,Marcos,0
 5,3,0,Lucas@user.com,Senha321,Lucas,0
