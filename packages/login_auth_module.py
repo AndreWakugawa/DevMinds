@@ -8,9 +8,10 @@ def login_check(id_user, nome, turma):
     with open(os.path.abspath('usersDB.csv'),'r', newline='',encoding='utf-8') as usersDB:
         reader_obj = csv.reader(usersDB, quoting=csv.QUOTE_NONE)
         print('\nBem vindo ao eVAL360!\n'
-                'Antes de acessar, por favor faça seu login\n')
+            'Antes de acessar, por favor faça seu login\n')
         email = input('Email: ')
         senha = pw.pwinput(prompt='Senha: ')
+        print()
 
         for linha in reader_obj:
             if linha[3] == email and linha[4] == senha:

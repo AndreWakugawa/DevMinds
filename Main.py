@@ -45,8 +45,9 @@ opcoes_adm = ['Gerenciar Cadastros',
 if user_level == 0:
 
     while True:
-        print(f"Olá, {nome}! O que deseja fazer?\n")
-        print(f"1. {opcoes_aluno[0]}\n2. {opcoes_aluno[1]}")
+        print(f"Olá, {nome}! O que deseja fazer?\n"
+                        f"1.{opcoes_aluno[0]}\n"
+                        f"2.{opcoes_aluno[1]}\n")
         opcao = input("Insira o número da opção: ")
         print()
 
@@ -54,8 +55,10 @@ if user_level == 0:
             sprint_atual = ''
             turma_nome = ''
             sprint_info = date_check(turma, turma_nome, sprint_atual)
-            turma, turma_nome, sprint_atual = sprint_info
-            aval(id_user, nome, turma_nome, sprint_atual)
+            
+            if sprint_info:
+                turma, turma_nome, sprint_atual = sprint_info
+                aval(id_user, nome, turma_nome, sprint_atual)
 
         elif opcao == "2":
             sair = input("Deseja mesmo sair? [Y/N]").lower()
@@ -69,30 +72,31 @@ if user_level == 0:
 elif user_level == 1:
 
     while True:
-        print(f"Olá, {nome}! O que deseja fazer?\n")
-        print(f'1. {opcoes_adm[0]}',
-              f'\n2. {opcoes_adm[1]}',
-              f'\n3. {opcoes_adm[2]}',
-              f'\n4. {opcoes_adm[3]}',
-              f'\n5. {opcoes_adm[4]}')
+        print(f'Olá, {nome}! O que deseja fazer?\n\n'
+                            f'1.{opcoes_adm[0]}\n'
+                            f'2.{opcoes_adm[1]}\n'
+                            f'3.{opcoes_adm[2]}\n'
+                            f'4.{opcoes_adm[3]}\n'
+                            f'5.{opcoes_adm[4]}\n')
         opcao = input("Insira o número da opção: ")
         print()
 
         if opcao == "1":
-            opcoes_userMgmt = ['Cadastrar um usuário.',
-                            'Procurar um usuário pela ID.',
-                            'Deletar um usuário.',
-                            'Alterar a qual time um usuário está associado.']
+            opcoes_userMgmt = ['Cadastrar usuário.',
+                                'Buscar usuário pela ID.',
+                                'Apagar usuário.',
+                                'Alterar time de usuário.',
+                                'Voltar']
             
-            print(f'\n{nome},',
-                  ' o que deseja mudar em relação aos usuários?\n')
+            print('Gerenciameto de usuário:\n')
             
-            print (f'1.{opcoes_userMgmt[0]}'
-                   f'\n2.{opcoes_userMgmt[1]}'
-                   f'\n3.{opcoes_userMgmt[2]}'
-                   f'\n4.{opcoes_userMgmt[3]}')
+            print (f'1.{opcoes_userMgmt[0]}\n'
+                   f'2.{opcoes_userMgmt[1]}\n'
+                   f'3.{opcoes_userMgmt[2]}\n'
+                   f'4.{opcoes_userMgmt[3]}\n'
+                   f'5.{opcoes_userMgmt[4]}\n')
             
-            opções_userSelect = int(input('\n'"Insira o número da opção:"))
+            opções_userSelect = int(input("Insira o número da opção:"))
             if opções_userSelect == 1:
                 uc.add_cad()
 
@@ -104,6 +108,10 @@ elif user_level == 1:
 
             elif opções_userSelect == 4:
                 mudartime()
+
+            elif opções_userSelect == 5:
+                print()
+                continue
 
         elif opcao == "2":
             spr.sprint_check()

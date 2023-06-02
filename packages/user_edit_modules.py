@@ -20,12 +20,12 @@ def add_cad():
     email_regex = r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$'
     
     while True:
-        email = input('\n'"Insira o e-mail do novo usuário: ")
+        email = input("\nInsira o e-mail do novo usuário: ")
 
         if re.match(email_regex, email):
             break
         else:
-            print('\n'"E-mail inválido. Por favor, insira um e-mail no formato 'usuario@dominio.com'.")
+            print("\nE-mail inválido. Por favor, tente novamente.")
         
     nome = input("Insira seu nome: ")
 
@@ -35,17 +35,17 @@ def add_cad():
         if senha == conf_senha:
             break
         else:
-            print('\n'"Senha incorreta, tente novamente!")
+            print("\nSenha incorreta, tente novamente!")
 
     while True:
         turma = input('\nInsira a turma do aluno: ')
         if turma.isnumeric():
             turma = int(turma)
             user_level = 0
-            print ('\n'"Cadastro bem sucedido!")
+            print ("\nCadastro bem sucedido!")
             break
         else:
-            print('\n'"Entrada inválida. Por favor, insira um valor numérico para a turma.")
+            print("\nEntrada inválida. Por favor, insira um valor numérico para a turma.")
 
     with open(csv_path,'r+', newline='',encoding='utf-8') as cad_csv:
         csv_writer = csv.writer(cad_csv)
@@ -55,24 +55,26 @@ def add_cad():
 
 def excluir_usuario():
 
-    id_userDelete = input('\n'"Esta função deleta o usuário correspondente a ID informada. Prossiga com cautela, visto que nada pode ser desfeito."'\n'"Entre com a ID do usuário a ser deletado:")
+    id_userDelete = input('ATENÇÃO!!\n'
+                        'Usuários apagados terão seus dados perdidos permanentemente!!'
+                        'Entre com a ID do usuário a ser deletado: ')
     
-    confirmacao = input('\n'"Deseja mesmo deletar esse usuário?(Y,N): ")
+    confirmacao = input("\nDeseja mesmo deletar esse usuário? [Y,N]: ").lower()
 
-    if confirmacao == "Y" or "y":
+    if confirmacao == "y":
         with open('usersDB.csv', 'r', newline='', encoding='utf-8') as f:
             reader = csv.reader(f)
             rows = [row for row in reader if row[0] != id_userDelete]   
         with open('usersDB.csv', 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             writer.writerows(rows)
-    elif confirmacao == "N" or "n":
-        print('\n'"Função encerrada"'\n')
+    elif confirmacao == "n":
+        print("\nFunção encerrada\n")
 
 
 def buscar_usuario():
 
-    id_userSearch = input('\n'"Está é a função de busca de usuários."'\n'"Entre com a ID do usuário que deseje buscar:")
+    id_userSearch = input("\nInsira a ID do usuário:\n")
 
     with open('usersDB.csv', 'r', newline='',encoding='utf-8') as f:
         reader = csv.reader(f)

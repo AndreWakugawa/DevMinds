@@ -141,11 +141,13 @@ def date_check(turma, turma_nome, sprint_atual):
             return print('Todas as sprints foram finalizadas! Retornando...\n')
         
         elif hoje_today < sprint_end or hoje_today > sprint_end_timebox:
-            print(f'Não é possível realizar avaliações da Sprint {sprint_atual}!!',
-                  f'\nPeríodo avaliativo:',
-                  f'\nDe {sprint_end} até {sprint_end_timebox}\n')
-            return False
+            sprint_end = str(sprint_end)
+            sprint_end_timebox = str(sprint_end_timebox)
+            print(f'Não é possível realizar avaliações da Sprint {sprint_atual} agora!!\n\n',
+                  f'Aguarde o período avaliativo:\n',
+                  f'De {sprint_end[:10]} até {sprint_end_timebox[:10]}\n')
+            return
         
-        print(f'Iniciando avaliação da Sprint {sprint_atual}')
+        print(f'Iniciando avaliação da Sprint {sprint_atual}\n')
         return (turma, turma_nome, sprint_atual)
     

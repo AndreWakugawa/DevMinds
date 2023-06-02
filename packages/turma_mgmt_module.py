@@ -31,6 +31,7 @@ def turma_mgmt ():
     if opcaoInput == 3:
         turmaDel()
     if opcaoInput == 4:
+        print()
         return
 
 
