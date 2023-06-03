@@ -12,7 +12,9 @@ fatores_chave = ["Comunicação e Trabalho em Equipe",
                 "Entrega de Resultados com Valor Agregado",
                 "Auto-gestão das Atividades"]
 
+
 def exibir_graficos(aluno_id):
+
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
 
     labels = [textwrap.fill(criterio, 12) for criterio in fatores_chave]

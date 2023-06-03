@@ -13,23 +13,31 @@ media_sala = calcular_media_sala(csv_path)
 notas_alunos = obter_notas_alunos(csv_path)
 
 while True:
-    print("\nVISUALIZAÇÃO DE DASHBOARDS")
-    aluno_id = input("\nDigite o ID do aluno que deseja analisar: ")
+
+    print("\nVISUALIZAÇÃO DE DASHBOARDS\n")
+    aluno_id = input("Digite o ID do aluno que deseja analisar: ")
+
     if aluno_id.strip() == "":
         print("ID do aluno não pode estar vazio. Por favor, digite um valor válido.")
         continue
+
     exibir_graficos(int(aluno_id))
-    opcao = str(input("O que deseja fazer?\n\n(0) Visualizar outro aluno\n(1) Sair\n\nDigite aqui: "))
+    opcao = str(input('O que deseja fazer?\n'
+                      '1.Visualizar outro aluno\n'
+                      '2.Sair\n'
+                      'Digite aqui: '))
+
     if opcao.strip() == "":
         print("Opção inválida. Por favor, digite um valor válido.")
         continue
+
     if opcao.isdigit():
         opcao = int(opcao)
-        if opcao == 0:
+        if opcao == 1:
             continue
-        elif opcao == 1:
+        elif opcao == 2:
             break
         else:
-            print("Opção inválida. Digite 0 para sair ou 1 para continuar.")
+            print("Opção inválida. Digite 1 para continuar ou 2 para sair.")
     else:
         print("Valor inválido.")

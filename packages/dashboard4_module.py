@@ -1,20 +1,22 @@
-def dash_user(id_user):
-    import matplotlib.pyplot as plt
-    import numpy as np
-    import textwrap
-    import csv
-    import os
+import matplotlib.pyplot as plt
+import numpy as np
+import textwrap
+import csv
+import os
 
-    from packages.notas_alunos_module import obter_notas_alunos
-    
+from packages.notas_alunos_module import obter_notas_alunos
+
+
+def dash_user(id_user):
+
     csv_path = os.path.abspath('evalDB.csv')
     fatores_chave = ["Comunicação e Trabalho em Equipe",
                     "Engajamento e Pró-atividade",
                     "Conhecimento e Aplicabilidade Técnica",
                     "Entrega de Resultados com Valor Agregado",
                     "Auto-gestão das Atividades"]
-
     id_usuario = int(id_user)
+
     with open('evalDB.csv', 'r') as file:
         reader = csv.DictReader(file)
         
@@ -25,14 +27,15 @@ def dash_user(id_user):
                 break
         
         file.seek(0)
-        
         turma = []
+
         for row in reader:
             if row['id_turma'] == turma_usuario:
                 turma.append(row)
         
         media_turma = [0, 0, 0, 0, 0]
         total_alunos = len(turma)
+
         for usuario in turma:
             media_turma[0] += float(usuario['criterio1'])
             media_turma[1] += float(usuario['criterio2'])
@@ -45,7 +48,11 @@ def dash_user(id_user):
         notas_usuario = []
         for usuario in turma:
             if int(usuario['id_user']) == id_usuario:
-                notas_usuario = [float(usuario['criterio1']), float(usuario['criterio2']), float(usuario['criterio3']), float(usuario['criterio4']), float(usuario['criterio5'])]
+                notas_usuario = [float(usuario['criterio1']),
+                                 float(usuario['criterio2']),
+                                 float(usuario['criterio3']),
+                                 float(usuario['criterio4']),
+                                 float(usuario['criterio5'])]
                 break
 
         fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
@@ -56,7 +63,7 @@ def dash_user(id_user):
         notas_alunos = obter_notas_alunos(csv_path)
 
         media_sala = [float(valor) for valor in media_turma]
-        cores_sala = np.where(np.array(media_sala) >= 4, '#1B63AB', np.where(np.array(media_sala) < 3, '#5C6065', '#1B63AB'))
+        cores_sala = np.where(np.array(media_sala) >= 4,'#1B63AB', np.where(np.array(media_sala) < 3, '#5C6065', '#1B63AB'))
 
         ax1.bar(labels, media_sala, color=cores_sala, alpha=0.5)
         ax1.set_ylim(0, 5)
@@ -66,7 +73,7 @@ def dash_user(id_user):
 
         if id_usuario in notas_alunos:
             notas_aluno = np.mean(notas_alunos[id_usuario]["notas"], axis=0)
-            cores_aluno = np.where(notas_aluno >= 4, '#1B63AB', np.where(notas_aluno <= 3, '#5C6065', '#1B63AB'))
+            cores_aluno = np.where(notas_aluno >= 4,'#1B63AB', np.where(notas_aluno <= 3, '#5C6065', '#1B63AB'))
             ax2.bar(labels, notas_aluno, color=cores_aluno, alpha=0.5)
             ax2.set_ylim(0, 5)
             ax2.set_xticks(range(len(labels)))
@@ -78,6 +85,8 @@ def dash_user(id_user):
 
         plt.tight_layout()
         plt.show()
+
+
 def dash_time(id_user):
     import matplotlib.pyplot as plt
     import numpy as np
@@ -86,6 +95,7 @@ def dash_time(id_user):
 
     csv_path = os.path.abspath('evalDB.csv')
     id_user = int(id_user)
+
     with open(csv_path, "r") as file:
         csv_reader = csv.DictReader(file)
 
@@ -106,11 +116,12 @@ def dash_time(id_user):
                 time += 1
                 
         media_time = [0, 0, 0, 0, 0]
-
         file.seek(0)
+
         for row in csv_reader:
             id_time = row['id_time']
             id_turma = row['id_turma']
+
             if user_turma == id_turma and user_time == id_time:
                 media_time[0] += float(row['criterio1'])
                 media_time[1] += float(row['criterio2'])
@@ -121,8 +132,10 @@ def dash_time(id_user):
 
         notas = [0, 0, 0, 0, 0]
         file.seek(0)
+
         for row in csv_reader:
             id_user = str(id_user)
+
             if id_user == row['id_user']:
                 notas[0] += float(row['criterio1'])
                 notas[1] += float(row['criterio2'])
@@ -137,6 +150,7 @@ def dash_time(id_user):
     bar_aluno = ax.bar(r1, notas, color='#7D10C8', width=barWidth, label='Notas do Aluno')
     bar_time = ax.bar(r1 + barWidth, media_time, color='#561385', width=barWidth, label='Média do Time')
     ax.legend(loc='upper right', labels=['Aluno', 'Time'])
+    
     plt.xlabel('Provas')
     plt.ylabel('Notas')
     plt.title('Comparação Aluno x Média do Time')

@@ -18,6 +18,7 @@ def calcular_media_sala(csv_path):
 
     return media_sala
 
+
 def medTime(turma_escolhida):
     filename = os.path.abspath('evalDB.csv') 
     turmas = []
@@ -47,6 +48,7 @@ def medTime(turma_escolhida):
                     turma_atual['times'][id_time] = [sum(vals) // len(vals) for vals in zip(turma_atual['times'][id_time], criterios)]
 
     return turmas
+
 
 def alunoxtime(csv_path, turma_escolhida, time_escolhido):
     with open(csv_path, "r") as file:

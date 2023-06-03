@@ -1,13 +1,15 @@
-def dash_adm():
-    import matplotlib.pyplot as plt
-    import textwrap
-    import numpy as np
-    import csv
-    import os
+import matplotlib.pyplot as plt
+import textwrap
+import numpy as np
+import csv
+import os
 
-    from packages.notas_alunos_module import obter_notas_alunos
-    from packages.graficos_module import exibir_graficos
-    from packages.medias_module import calcular_media_sala
+from packages.notas_alunos_module import obter_notas_alunos
+from packages.graficos_module import exibir_graficos
+from packages.medias_module import calcular_media_sala
+
+
+def dash_adm():
 
     csv_path = os.path.abspath('evalDB.csv')
     media_sala = calcular_media_sala(csv_path)
@@ -37,3 +39,4 @@ def dash_adm():
         
         if opcao == '1':
             break
+        
