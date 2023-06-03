@@ -1,4 +1,4 @@
-def dash_cleber():
+def dash_cleber(current_aluno):
     import matplotlib.pyplot as plt
     from matplotlib.widgets import Button
     import numpy as np
@@ -25,24 +25,28 @@ def dash_cleber():
 
         return media_time, notas_alunos_dict
 
-    def update_chart():
+    def update_chart(current_aluno):
         notas_aluno = list(notas_alunos_dict.values())[current_aluno]
         for bar, nota in zip(bars_aluno, notas_aluno):
             bar.set_height(nota)
         plt.draw()
 
-    def next_aluno(event):
-        global current_aluno
+        return current_aluno
+
+    def next_aluno(event, current_aluno):
         current_aluno = (current_aluno + 1) % num_alunos
         ax.set_title(f'Aluno {list(notas_alunos_dict.keys())[current_aluno]} x Time')
-        update_chart()
+        update_chart(current_aluno)
 
-    def previous_aluno(event):
-        global current_aluno
+        return current_aluno
+    
+    def previous_aluno(event, current_aluno):
         current_aluno = (current_aluno - 1) % num_alunos
         ax.set_title(f'Aluno {list(notas_alunos_dict.keys())[current_aluno]} x Time')
-        update_chart()
+        update_chart(current_aluno)
 
+        return current_aluno
+    
     csv_path = os.path.abspath('eValDB.csv')
     while True:
         turma_escolhida = None
@@ -82,11 +86,11 @@ def dash_cleber():
 
         ax_next_button = plt.axes([0.8, 0.05, 0.1, 0.04])
         btn_next = Button(ax_next_button, 'Próximo Aluno')
-        btn_next.on_clicked(next_aluno)
+        btn_next.on_clicked(lambda event: next_aluno(event, current_aluno))
 
         ax_prev_button = plt.axes([0.1, 0.05, 0.1, 0.04])
         btn_prev = Button(ax_prev_button, 'Aluno Anterior')
-        btn_prev.on_clicked(previous_aluno)
+        btn_prev.on_clicked(lambda event: previous_aluno(event, current_aluno))
 
         ax.set_position([0.1, 0.3, 0.6, 0.6])
 
