@@ -118,6 +118,7 @@ def date_check(turma, turma_nome, sprint_atual):
         
         sprint_atual = 1
         hoje_today = d.datetime.today()
+        sprint_init = ""
         
         for linha in reader_turmas:
             if turma == linha[0]:
