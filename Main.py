@@ -70,8 +70,8 @@ if user_level == 0:
                 turma, turma_nome, sprint_atual = sprint_info
                 aval(id_user, nome, turma_nome, sprint_atual)
         elif opcao == "2":
-            dash = input(f"1. {opcoes_dash[0]}\n",
-                         f"2. {opcoes_dash[1]}\n",
+            dash = input(f"1. {opcoes_dash[0]}\n"
+                         f"2. {opcoes_dash[1]}\n"
                          "Insira o número da opção: "
                          )
             if dash == '1':
@@ -142,11 +142,10 @@ elif user_level == 1:
             turma_mgmt()
             
         elif opcao == "4":
-            dash = input(f"1. {opcoes_dash_adm[0]}\n",
-                         f"2. {opcoes_dash_adm[1]}\n",
-                         f"3. {opcoes_dash_adm[2]}\n",
-                         "Insira o número da opção: "
-                         )
+            print(f"1.{opcoes_dash_adm[0]}\n"
+                    f"2.{opcoes_dash_adm[1]}\n"
+                    f"3.{opcoes_dash_adm[2]}\n")
+            dash = input("Insira o número da opção: ")
             if dash == '1':
                 dash_adm()
             elif dash == '2':

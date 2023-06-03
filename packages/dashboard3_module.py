@@ -43,7 +43,7 @@ def dash_cleber():
         ax.set_title(f'Aluno {list(notas_alunos_dict.keys())[current_aluno]} x Time')
         update_chart()
 
-    csv_path = os.path.abspath('eValDB.csv')
+    csv_path = os.path.abspath('evalDB.csv')
     while True:
         turma_escolhida = None
         while turma_escolhida is None:

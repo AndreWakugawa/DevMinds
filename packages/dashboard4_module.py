@@ -7,7 +7,7 @@ def dash_user(id_user):
 
     from packages.notas_alunos_module import obter_notas_alunos
     
-    csv_path = os.path.abspath('eValDB.csv')
+    csv_path = os.path.abspath('evalDB.csv')
     fatores_chave = ["Comunicação e Trabalho em Equipe",
                     "Engajamento e Pró-atividade",
                     "Conhecimento e Aplicabilidade Técnica",
@@ -52,7 +52,7 @@ def dash_user(id_user):
 
         labels = [textwrap.fill(criterio, 12) for criterio in fatores_chave]
 
-        csv_path = os.path.abspath('eValDB.csv')
+        csv_path = os.path.abspath('evalDB.csv')
         notas_alunos = obter_notas_alunos(csv_path)
 
         media_sala = [float(valor) for valor in media_turma]
