@@ -32,13 +32,13 @@ def dash_cleber():
         plt.draw()
 
     def next_aluno(event):
-        global current_aluno
+        nonlocal current_aluno
         current_aluno = (current_aluno + 1) % num_alunos
         ax.set_title(f'Aluno {list(notas_alunos_dict.keys())[current_aluno]} x Time')
         update_chart()
 
     def previous_aluno(event):
-        global current_aluno
+        nonlocal current_aluno
         current_aluno = (current_aluno - 1) % num_alunos
         ax.set_title(f'Aluno {list(notas_alunos_dict.keys())[current_aluno]} x Time')
         update_chart()
