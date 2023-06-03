@@ -17,7 +17,7 @@ def exibir_graficos(aluno_id):
 
     labels = [textwrap.fill(criterio, 12) for criterio in fatores_chave]
 
-    csv_path = os.path.abspath('eValDB.csv')
+    csv_path = os.path.abspath('evalDB.csv')
     notas_alunos = obter_notas_alunos(csv_path)
     
     media_sala = calcular_media_sala(csv_path)

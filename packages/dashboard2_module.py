@@ -8,7 +8,7 @@ def dash_times():
 
     fatores_chave = ["Comunicação", "Engajamento", "Conhecimento", "Entrega", "Auto-gestão"]
     num_fatores = len(fatores_chave)
-    csv_path = os.path.abspath('eValDB.csv')
+    csv_path = os.path.abspath('evalDB.csv')
 
     while True:
         turma_escolhida = None

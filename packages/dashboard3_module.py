@@ -1,4 +1,4 @@
-def dash_cleber(current_aluno):
+def dash_cleber():
     import matplotlib.pyplot as plt
     from matplotlib.widgets import Button
     import numpy as np
@@ -25,29 +25,27 @@ def dash_cleber(current_aluno):
 
         return media_time, notas_alunos_dict
 
-    def update_chart(current_aluno):
+    def update_chart():
         notas_aluno = list(notas_alunos_dict.values())[current_aluno]
         for bar, nota in zip(bars_aluno, notas_aluno):
             bar.set_height(nota)
         plt.draw()
 
-        return current_aluno
-
-    def next_aluno(event, current_aluno):
+    def next_aluno(event):
+        nonlocal current_aluno
         current_aluno = (current_aluno + 1) % num_alunos
         ax.set_title(f'Aluno {list(notas_alunos_dict.keys())[current_aluno]} x Time')
-        update_chart(current_aluno)
+        update_chart()
 
-        return current_aluno
-    
-    def previous_aluno(event, current_aluno):
+
+    def previous_aluno(event):
+        nonlocal current_aluno
         current_aluno = (current_aluno - 1) % num_alunos
         ax.set_title(f'Aluno {list(notas_alunos_dict.keys())[current_aluno]} x Time')
-        update_chart(current_aluno)
+        update_chart()
 
-        return current_aluno
-    
-    csv_path = os.path.abspath('eValDB.csv')
+    csv_path = os.path.abspath('evalDB.csv')
+
     while True:
         turma_escolhida = None
         while turma_escolhida is None:
