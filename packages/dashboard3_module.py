@@ -37,6 +37,7 @@ def dash_cleber():
         ax.set_title(f'Aluno {list(notas_alunos_dict.keys())[current_aluno]} x Time')
         update_chart()
 
+
     def previous_aluno(event):
         nonlocal current_aluno
         current_aluno = (current_aluno - 1) % num_alunos
@@ -44,6 +45,7 @@ def dash_cleber():
         update_chart()
 
     csv_path = os.path.abspath('evalDB.csv')
+
     while True:
         turma_escolhida = None
         while turma_escolhida is None:
@@ -82,11 +84,11 @@ def dash_cleber():
 
         ax_next_button = plt.axes([0.8, 0.05, 0.1, 0.04])
         btn_next = Button(ax_next_button, 'Próximo Aluno')
-        btn_next.on_clicked(next_aluno)
+        btn_next.on_clicked(lambda event: next_aluno(event, current_aluno))
 
         ax_prev_button = plt.axes([0.1, 0.05, 0.1, 0.04])
         btn_prev = Button(ax_prev_button, 'Aluno Anterior')
-        btn_prev.on_clicked(previous_aluno)
+        btn_prev.on_clicked(lambda event: previous_aluno(event, current_aluno))
 
         ax.set_position([0.1, 0.3, 0.6, 0.6])
 

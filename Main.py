@@ -151,7 +151,8 @@ elif user_level == 1:
             elif dash == '2':
                 dash_times()
             elif dash == '3':
-                dash_cleber()
+                current_aluno = 0
+                dash_cleber(current_aluno)
             else:
                 print("Opção inválida")
 
