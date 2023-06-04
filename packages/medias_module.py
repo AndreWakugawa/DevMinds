@@ -18,7 +18,7 @@ def calcular_media_sala(csv_path):
 
     return media_sala
 
-
+  
 def medTime(turma_escolhida):
     filename = os.path.abspath('evalDB.csv') 
     turmas = []

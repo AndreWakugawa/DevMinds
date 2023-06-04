@@ -15,7 +15,6 @@ from packages.dashboard2_module import dash_times
 from packages.dashboard3_module import dash_cleber
 from packages.dashboard4_module import dash_user, dash_time
 
-
 while True:
 
     id_user = []
@@ -171,6 +170,7 @@ elif user_level == 1:
                 dash_times()
             
             elif dash == '3':
+                current_aluno = 0
                 dash_cleber()
             
             else:
@@ -185,4 +185,3 @@ elif user_level == 1:
         else:
             print("Opção inválida!")
             break
-        

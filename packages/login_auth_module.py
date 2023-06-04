@@ -1,4 +1,4 @@
-import os, sys, csv
+import os, csv
 import pwinput as pw 
 import hashlib
 
@@ -29,10 +29,8 @@ def login_check(id_user, nome, turma):
                 usersDB.seek(0)
                 usersDB.close()
                 return (id_user, nome, turma)
-            
         
         usersDB.seek(0)
         usersDB.close()
 
         return False
-    

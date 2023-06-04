@@ -15,6 +15,7 @@ def dash_user(id_user):
                     "Conhecimento e Aplicabilidade Técnica",
                     "Entrega de Resultados com Valor Agregado",
                     "Auto-gestão das Atividades"]
+    
     id_usuario = int(id_user)
 
     with open('evalDB.csv', 'r') as file:
@@ -63,7 +64,7 @@ def dash_user(id_user):
         notas_alunos = obter_notas_alunos(csv_path)
 
         media_sala = [float(valor) for valor in media_turma]
-        cores_sala = np.where(np.array(media_sala) >= 4,'#1B63AB', np.where(np.array(media_sala) < 3, '#5C6065', '#1B63AB'))
+        cores_sala = np.where(np.array(media_sala) >= 4, '#1B63AB', np.where(np.array(media_sala) < 3, '#5C6065', '#1B63AB'))
 
         ax1.bar(labels, media_sala, color=cores_sala, alpha=0.5)
         ax1.set_ylim(0, 5)
@@ -73,7 +74,8 @@ def dash_user(id_user):
 
         if id_usuario in notas_alunos:
             notas_aluno = np.mean(notas_alunos[id_usuario]["notas"], axis=0)
-            cores_aluno = np.where(notas_aluno >= 4,'#1B63AB', np.where(notas_aluno <= 3, '#5C6065', '#1B63AB'))
+            cores_aluno = np.where(notas_aluno >= 4, '#1B63AB', np.where(notas_aluno <= 3, '#5C6065', '#1B63AB'))
+
             ax2.bar(labels, notas_aluno, color=cores_aluno, alpha=0.5)
             ax2.set_ylim(0, 5)
             ax2.set_xticks(range(len(labels)))
@@ -150,7 +152,7 @@ def dash_time(id_user):
     bar_aluno = ax.bar(r1, notas, color='#7D10C8', width=barWidth, label='Notas do Aluno')
     bar_time = ax.bar(r1 + barWidth, media_time, color='#561385', width=barWidth, label='Média do Time')
     ax.legend(loc='upper right', labels=['Aluno', 'Time'])
-    
+
     plt.xlabel('Provas')
     plt.ylabel('Notas')
     plt.title('Comparação Aluno x Média do Time')
@@ -159,4 +161,5 @@ def dash_time(id_user):
     ax.set_title('Você x Time')
     ax.set_position([0.1, 0.3, 0.6, 0.6])
     fig.subplots_adjust(left=0.1, right=0.9, top=0.85, bottom=0.3)
+
     plt.show()

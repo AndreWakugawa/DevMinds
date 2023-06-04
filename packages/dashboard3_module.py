@@ -37,15 +37,16 @@ def dash_cleber():
         plt.draw()
 
     def next_aluno(event):
-
-        global current_aluno
+      
+        nonlocal current_aluno
         current_aluno = (current_aluno + 1) % num_alunos
         ax.set_title(f'Aluno {list(notas_alunos_dict.keys())[current_aluno]} x Time')
         update_chart()
 
-    def previous_aluno(event):
 
-        global current_aluno
+    def previous_aluno(event):
+    
+        nonlocal current_aluno
         current_aluno = (current_aluno - 1) % num_alunos
         ax.set_title(f'Aluno {list(notas_alunos_dict.keys())[current_aluno]} x Time')
         update_chart()
@@ -93,11 +94,11 @@ def dash_cleber():
 
         ax_next_button = plt.axes([0.8, 0.05, 0.1, 0.04])
         btn_next = Button(ax_next_button, 'Próximo Aluno')
-        btn_next.on_clicked(next_aluno)
+        btn_next.on_clicked(lambda event: next_aluno(event))
 
         ax_prev_button = plt.axes([0.1, 0.05, 0.1, 0.04])
         btn_prev = Button(ax_prev_button, 'Aluno Anterior')
-        btn_prev.on_clicked(previous_aluno)
+        btn_prev.on_clicked(lambda event: previous_aluno(event))
 
         ax.set_position([0.1, 0.3, 0.6, 0.6])
 

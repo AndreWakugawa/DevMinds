@@ -2,6 +2,7 @@ import re,os,csv
 import pwinput as pw
 import hashlib
 
+
 def add_cad():
 
     csv_path = os.path.abspath('usersDB.csv')
@@ -33,6 +34,7 @@ def add_cad():
         senha = pw.pwinput("Crie uma senha: ")
         conf_senha = pw.pwinput("Confirme sua senha: ")
         hashed_password = hashlib.sha256(senha.encode()).hexdigest()
+
         if senha == conf_senha:
             break
         else:
@@ -56,6 +58,7 @@ def add_cad():
             print('\nSenha correta. Cadastro bem sucedido!')
         else:
             print('\nSenha incorreta. Cadastro não realizado.')
+
 
 def excluir_usuario():
 
