@@ -8,7 +8,7 @@ from packages.aval_module import aval
 def sprint_check():
 
     global filename
-    filename = os.path.abspath('turmasDB.csv') # Nome do arquivo
+    filename = os.path.abspath('turmasDB.csv')
 
     with open(filename,'r+', newline='',encoding='utf-8') as turmasDB:
         global reader_turmas
@@ -16,6 +16,7 @@ def sprint_check():
         writer_turmas = csv.writer(turmasDB, quoting=csv.QUOTE_NONE)
         next(reader_turmas, None)
         print ("TURMAS CADASTRADAS:")
+
         for linha in reader_turmas:
             turmaID = linha[0]
             turmaNome = linha[1]
@@ -23,10 +24,12 @@ def sprint_check():
         print()
         turma = int(input("Qual o id da Turma que deseja gerenciar as Sprints?: "))
         turmasDB.seek(0)
+
         for linha in reader_turmas:
             if str(turma) == str(linha[0]):
                 turma_nome = linha [1]
                 print (f"Você está configurando a turma '{turma_nome}'.\n")
+
                 if linha[4].strip() == "":
                     turmasDB.seek(0)
                     print ("A configuração inicial das Sprints ainda não foi realizada. Vamos prosseguir com ela.\n")
@@ -110,7 +113,7 @@ def sprint_edit(turma, turmasDB, reader_turmas, writer_turmas, turma_nome):
 
 def date_check(turma, turma_nome, sprint_atual):
 
-    filename = os.path.abspath('turmasDB.csv') # Nome do arquivo
+    filename = os.path.abspath('turmasDB.csv')
 
     with open(filename,'r+', newline='',encoding='utf-8') as turmasDB:
         reader_turmas = csv.reader(turmasDB, quoting=csv.QUOTE_NONE)

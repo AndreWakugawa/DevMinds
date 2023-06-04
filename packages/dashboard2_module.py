@@ -1,10 +1,12 @@
-def dash_times():
-    import os
-    import csv
-    import numpy as np
-    import matplotlib.pyplot as plt
+import os
+import csv
+import numpy as np
+import matplotlib.pyplot as plt
 
-    from packages.medias_module import medTime
+from packages.medias_module import medTime
+
+
+def dash_times():
 
     fatores_chave = ["Comunicação", "Engajamento", "Conhecimento", "Entrega", "Auto-gestão"]
     num_fatores = len(fatores_chave)

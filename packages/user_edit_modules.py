@@ -1,5 +1,6 @@
 import re,os,csv
 import pwinput as pw
+import hashlib
 
 
 def add_cad():
@@ -32,6 +33,8 @@ def add_cad():
     while True:
         senha = pw.pwinput("Crie uma senha: ")
         conf_senha = pw.pwinput("Confirme sua senha: ")
+        hashed_password = hashlib.sha256(senha.encode()).hexdigest()
+
         if senha == conf_senha:
             break
         else:
@@ -47,10 +50,14 @@ def add_cad():
         else:
             print("\nEntrada inválida. Por favor, insira um valor numérico para a turma.")
 
-    with open(csv_path,'r+', newline='',encoding='utf-8') as cad_csv:
+    with open(csv_path,'a', newline='',encoding='utf-8') as cad_csv:
         csv_writer = csv.writer(cad_csv)
-        cad_csv.seek(0, 2)
-        csv_writer.writerow([id, None, turma, email, senha, nome, user_level])
+        csv_writer.writerow([id, None, turma, email, hashed_password, nome, user_level])
+        hashed_password_input = hashlib.sha256(senha.encode()).hexdigest()
+        if hashed_password_input == hashed_password:
+            print('\nSenha correta. Cadastro bem sucedido!')
+        else:
+            print('\nSenha incorreta. Cadastro não realizado.')
 
 
 def excluir_usuario():
@@ -82,6 +89,5 @@ def buscar_usuario():
         
         for row in reader:
             if row[0] == id_userSearch:
-                print('\n'"Aqui estão os dados do usuário selecionado: ")
+                print('\nAqui estão os dados do usuário selecionado: ')
                 print('\n',{cabecalhos[i]: row[i] for i in range(len(cabecalhos))})
-    

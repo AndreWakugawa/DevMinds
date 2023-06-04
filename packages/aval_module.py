@@ -21,6 +21,7 @@ def aval(id_user, nome, turma_nome, sprint_atual):
                 print(f'Turma: {turma_nome}\n'
                       f'Time: {time}\n')
         user_csv.seek(0)
+        
         for linha_integrante in user_reader:
             if linha_integrante[2] == turma and linha_integrante[1] == time:
                 integrantes_info.append(linha_integrante[0])

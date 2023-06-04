@@ -33,9 +33,9 @@ Considerando sua utilização no meio acadêmico, torna-se necessária a integra
  - [x] Permitir a avaliação entre os integrantes dos times e a sua autoavaliação;
  - [x] Controlar acesso de usuários (login);
  - [x] Categorizar permissões de usuários (ADM e integrantes);
-> - [ ] Possuir controle de turmas e times;
-> - [ ] Controle de sprints, dos quais os integrantes serão avaliados;
-> - [ ] Prover dashboards operacionais e gerenciais (mín. 4).
+ - [x] Possuir controle de turmas e times;
+ - [x] Controle de sprints, dos quais os integrantes serão avaliados;
+ - [x] Prover dashboards operacionais e gerenciais (mín. 4).
 
 # Documentação
 

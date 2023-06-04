@@ -1,11 +1,14 @@
+import numpy as np
+import os
+import csv
+import matplotlib.pyplot as plt
+from matplotlib.widgets import Button
+
+
 def dash_cleber():
-    import matplotlib.pyplot as plt
-    from matplotlib.widgets import Button
-    import numpy as np
-    import os
-    import csv
 
     def alunoxtime(csv_path, turma_escolhida, time_escolhido):
+
         with open(csv_path, "r") as file:
             csv_reader = csv.reader(file)
             next(csv_reader)
@@ -15,6 +18,7 @@ def dash_cleber():
             for row in csv_reader:
                 id_turma = int(row[3])
                 id_time = int(row[2])
+
                 if turma_escolhida == id_turma and time_escolhido == id_time:
                     id_user = int(row[1])
                     notas = [int(row[i]) if row[i] else 0 for i in range(5, 10)]
@@ -26,12 +30,14 @@ def dash_cleber():
         return media_time, notas_alunos_dict
 
     def update_chart():
+
         notas_aluno = list(notas_alunos_dict.values())[current_aluno]
         for bar, nota in zip(bars_aluno, notas_aluno):
             bar.set_height(nota)
         plt.draw()
 
     def next_aluno(event):
+      
         nonlocal current_aluno
         current_aluno = (current_aluno + 1) % num_alunos
         ax.set_title(f'Aluno {list(notas_alunos_dict.keys())[current_aluno]} x Time')
@@ -39,6 +45,7 @@ def dash_cleber():
 
 
     def previous_aluno(event):
+    
         nonlocal current_aluno
         current_aluno = (current_aluno - 1) % num_alunos
         ax.set_title(f'Aluno {list(notas_alunos_dict.keys())[current_aluno]} x Time')
@@ -47,7 +54,9 @@ def dash_cleber():
     csv_path = os.path.abspath('evalDB.csv')
 
     while True:
+
         turma_escolhida = None
+
         while turma_escolhida is None:
             turma_input = input("Digite o número da turma (0 a 3): ")
             if not turma_input.isdigit() or int(turma_input) < 0 or int(turma_input) > 3:
@@ -56,6 +65,7 @@ def dash_cleber():
                 turma_escolhida = int(turma_input)
 
         time_escolhido = None
+
         while time_escolhido is None:
             time_input = input("Digite o número do time (1 a 4): ")
             if not time_input.isdigit() or int(time_input) < 1 or int(time_input) > 4:
@@ -97,11 +107,16 @@ def dash_cleber():
         plt.show()
 
         opcao = None
+
         while opcao is None:
-            opcao_input = input("\nO que deseja fazer?\n(0) Visualizar outro time\n(1) Sair\n")
-            if not opcao_input.isdigit() or int(opcao_input) < 0 or int(opcao_input) > 1:
-                print("Opção inválida. Digite 0 para visualizar outro time ou 1 para sair.")
+            opcao_input = input('\nO que deseja fazer?\n'
+                                '1.Visualizar outro time\n'
+                                '2.Sair\n')
+            
+            if not opcao_input.isdigit() or int(opcao_input) < 1 or int(opcao_input) > 2:
+                print("Opção inválida. Digite 1 para visualizar outro time ou 2 para sair.")
             else:
                 opcao = int(opcao_input)
-        if opcao == 1:
+
+        if opcao == 2:
             break

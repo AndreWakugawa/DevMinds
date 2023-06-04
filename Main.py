@@ -2,6 +2,9 @@ import os
 import csv
 import sys
 
+import packages.user_edit_modules as uc
+import packages.sprint_mgmt_module as spr
+
 from packages.login_auth_module import login_check
 from packages.aval_module import aval
 from packages.team_edit_modules import mudartime
@@ -11,10 +14,9 @@ from packages.dashboard_module import dash_adm
 from packages.dashboard2_module import dash_times
 from packages.dashboard3_module import dash_cleber
 from packages.dashboard4_module import dash_user, dash_time
-import packages.user_edit_modules as uc
-import packages.sprint_mgmt_module as spr
 
 while True:
+
     id_user = []
     nome = []
     turma = []
@@ -41,16 +43,22 @@ while True:
 opcoes_aluno = ['Realizar avaliação',
                 'Seu Dashboard',
                 'Sair']
+
 opcoes_adm = ['Gerenciar Cadastros',
               'Gerenciar Sprints',
               'Gerenciar Turmas',
               'Analisar Dashboards',
               'Sair']
+
 opcoes_dash = ['Você X Time',
                'Voce X Turma']
+
 opcoes_dash_adm = ['Aluno X Turma',
                    'Comparação de times',
                    'Aluno x Time']
+
+# ACESSO USER ------------------------------------------------------
+
 if user_level == 0:
 
     while True:
@@ -69,17 +77,22 @@ if user_level == 0:
             if sprint_info:
                 turma, turma_nome, sprint_atual = sprint_info
                 aval(id_user, nome, turma_nome, sprint_atual)
+
         elif opcao == "2":
             dash = input(f"1. {opcoes_dash[0]}\n"
                          f"2. {opcoes_dash[1]}\n"
                          "Insira o número da opção: "
                          )
+            
             if dash == '1':
                 dash_time(id_user)
+
             elif dash == '2':
                 dash_user(id_user)
+
             else:
                 print("Opção inválida")
+
         elif opcao == "3":
             sair = input("Deseja mesmo sair? [Y/N]").lower()
 
@@ -89,9 +102,12 @@ if user_level == 0:
         else:
             print("Opção inválida!")
 
+# ACESSO ADM ------------------------------------------------------
+
 elif user_level == 1:
 
     while True:
+
         print(f'Olá, {nome}! O que deseja fazer?\n\n'
                             f'1.{opcoes_adm[0]}\n'
                             f'2.{opcoes_adm[1]}\n'
@@ -143,16 +159,20 @@ elif user_level == 1:
             
         elif opcao == "4":
             print(f"1.{opcoes_dash_adm[0]}\n"
-                    f"2.{opcoes_dash_adm[1]}\n"
-                    f"3.{opcoes_dash_adm[2]}\n")
+                  f"2.{opcoes_dash_adm[1]}\n"
+                  f"3.{opcoes_dash_adm[2]}\n")
             dash = input("Insira o número da opção: ")
+
             if dash == '1':
                 dash_adm()
+            
             elif dash == '2':
                 dash_times()
+            
             elif dash == '3':
                 current_aluno = 0
                 dash_cleber()
+            
             else:
                 print("Opção inválida")
 
