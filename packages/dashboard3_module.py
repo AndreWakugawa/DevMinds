@@ -84,11 +84,11 @@ def dash_cleber():
 
         ax_next_button = plt.axes([0.8, 0.05, 0.1, 0.04])
         btn_next = Button(ax_next_button, 'Próximo Aluno')
-        btn_next.on_clicked(lambda event: next_aluno(event, current_aluno))
+        btn_next.on_clicked(lambda event: next_aluno(event))
 
         ax_prev_button = plt.axes([0.1, 0.05, 0.1, 0.04])
         btn_prev = Button(ax_prev_button, 'Aluno Anterior')
-        btn_prev.on_clicked(lambda event: previous_aluno(event, current_aluno))
+        btn_prev.on_clicked(lambda event: previous_aluno(event))
 
         ax.set_position([0.1, 0.3, 0.6, 0.6])
 
