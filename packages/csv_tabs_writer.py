@@ -9,6 +9,7 @@ turma_data = [
 usuario_data = [
     {"id_user": "1", "id_time": "0", "id_turma": "0", "email": "aaa@adm.com", "senha": "111", "nome": "João", "user_level": "1"}
 ]
+
 # Criação do arquivo CSV
 with open("turmasDB.csv", "w", newline="", encoding='utf-8') as f:
     # Dados da tabela Turma
