@@ -6,7 +6,7 @@ import packages.user_edit_modules as uc
 import packages.sprint_mgmt_module as spr
 
 from packages.login_auth_module import login_check
-from packages.aval_module import aval
+from packages.aval_module import aval, feedbacks
 from packages.team_edit_modules import mudartime
 from packages.turma_mgmt_module import turma_mgmt
 from packages.sprint_mgmt_module import date_check
@@ -41,6 +41,7 @@ while True:
     print("Dados de Login ou Senha incorretos, tente novamente")
 
 opcoes_aluno = ['Realizar avaliação',
+                'Ver feedbacks',
                 'Seu Dashboard',
                 'Sair']
 
@@ -65,7 +66,8 @@ if user_level == 0:
         print(f"Olá, {nome}! O que deseja fazer?\n"
                         f"1.{opcoes_aluno[0]}\n"
                         f"2.{opcoes_aluno[1]}\n"
-                        f"3.{opcoes_aluno[2]}\n")
+                        f"3.{opcoes_aluno[2]}\n"
+                        f"4.{opcoes_aluno[3]}\n")
         opcao = input("Insira o número da opção: ")
         print()
 
@@ -78,7 +80,10 @@ if user_level == 0:
                 turma, turma_nome, sprint_atual = sprint_info
                 aval(id_user, nome, turma_nome, sprint_atual)
 
-        elif opcao == "2":
+        elif opcao == '2':
+            feedbacks(id_user)
+
+        elif opcao == "3":
             dash = input(f"1. {opcoes_dash[0]}\n"
                          f"2. {opcoes_dash[1]}\n"
                          "Insira o número da opção: "
@@ -93,7 +98,7 @@ if user_level == 0:
             else:
                 print("Opção inválida")
 
-        elif opcao == "3":
+        elif opcao == "4":
             sair = input("Deseja mesmo sair? [Y/N]").lower()
 
             if sair == "y":

@@ -6,11 +6,13 @@ import os
 from packages.notas_alunos_module import obter_notas_alunos
 from packages.medias_module import calcular_media_sala
 
+
 fatores_chave = ["Comunicação e Trabalho em Equipe",
                 "Engajamento e Pró-atividade",
                 "Conhecimento e Aplicabilidade Técnica",
                 "Entrega de Resultados com Valor Agregado",
                 "Auto-gestão das Atividades"]
+
 
 def exibir_graficos(aluno_id):
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
@@ -42,3 +44,4 @@ def exibir_graficos(aluno_id):
 
     plt.tight_layout()
     plt.show()
+    return

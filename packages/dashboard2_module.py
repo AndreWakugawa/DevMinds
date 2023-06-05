@@ -1,5 +1,4 @@
 import os
-import csv
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -15,9 +14,9 @@ def dash_times():
     while True:
         turma_escolhida = None
         while turma_escolhida is None:
-            turma_input = input("Digite o número da turma (0 a 3): ")
-            if not turma_input.isdigit() or int(turma_input) < 0 or int(turma_input) > 3:
-                print("Turma inválida. Digite um valor numérico entre 0 e 3.")
+            turma_input = input("Digite o número da turma (1 a 4): ")
+            if not turma_input.isdigit() or int(turma_input) < 1 or int(turma_input) > 4:
+                print("Turma inválida. Digite um valor numérico entre 1 e 4.")
             else:
                 turma_escolhida = int(turma_input)
                 turmas = medTime(turma_escolhida)
@@ -52,21 +51,5 @@ def dash_times():
         else:
             print("Turma não encontrada.")
 
-        while True:
-            opcao = input("\nO que deseja fazer?\n(0) Visualizar turma\n(1) Sair\n")
-            if opcao.strip() == "":
-                print("Opção inválida. Por favor, digite um valor válido.")
-                continue
-            if opcao.isdigit():
-                opcao = int(opcao)
-                if opcao == 0:
-                    break
-                elif opcao == 1:
-                    break
-                else:
-                    print("Opção inválida. Digite 0 para sair ou 1 para continuar.")
-            else:
-                print("Valor inválido.")
-        
-        if opcao == 1:
-            break
+        print()
+        return

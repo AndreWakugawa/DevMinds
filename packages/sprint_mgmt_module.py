@@ -2,7 +2,6 @@ import datetime as d
 import csv
 import os
 from datetime import timedelta
-from packages.aval_module import aval
 
 
 def sprint_check():

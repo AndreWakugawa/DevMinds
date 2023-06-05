@@ -134,3 +134,29 @@ def aval(id_user, nome, turma_nome, sprint_atual):
 
     with open(os.path.abspath('evalDB.csv'), 'a', newline='', encoding='utf-8') as cad_csv:
         cad_csv.write(csv_row + '\n')
+
+def feedbacks(id_user):
+
+    with open('evalDB.csv', 'r',encoding='utf-8') as evalDB:
+        reader_eval = csv.reader(evalDB)
+
+        sprint_select = input('De qual sprint deseja ver os feedbacks? ')
+        print()
+        users_feedbacks = []
+
+        for linha in reader_eval:
+            if id_user == linha[1]:
+                if sprint_select == linha[4]:
+                    list_feedbacks = [feedback.strip("''[]") for feedback in linha[10:15]]
+                    users_feedbacks.append(list_feedbacks)
+        
+        count_feedback = 0
+
+        for linha in users_feedbacks:
+            for feedback in linha:
+                count_feedback += 1
+                print(f'Feedback {count_feedback}: {feedback}')
+        
+        print()
+        return
+    

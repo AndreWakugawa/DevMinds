@@ -1,5 +1,6 @@
 import csv
 
+
 def obter_notas_alunos(csv_path):
     notas_por_id = {}
 

@@ -1,6 +1,3 @@
-import matplotlib.pyplot as plt
-import textwrap
-import numpy as np
 import csv
 import os
 
@@ -44,20 +41,4 @@ def dash_adm():
             continue
         exibir_graficos(int(aluno_id))
 
-        while True:
-            opcao = input("\nO que deseja fazer?\n(0) Visualizar aluno\n(1) Sair\n")
-            if opcao.strip() == "":
-                print("Opção inválida. Por favor, digite um valor válido.")
-                continue
-            if opcao.isdigit():
-                if opcao == '0':
-                    break
-                elif opcao == '1':
-                    break
-                else:
-                    print("Opção inválida. Digite 0 para sair ou 1 para continuar.")
-            else:
-                print("Valor inválido.")
-        
-        if opcao == '1':
-            break
+        return

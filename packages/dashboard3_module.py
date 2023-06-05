@@ -2,6 +2,7 @@ import numpy as np
 import os
 import csv
 import matplotlib.pyplot as plt
+
 from matplotlib.widgets import Button
 
 
@@ -106,17 +107,5 @@ def dash_cleber():
 
         plt.show()
 
-        opcao = None
-
-        while opcao is None:
-            opcao_input = input('\nO que deseja fazer?\n'
-                                '1.Visualizar outro time\n'
-                                '2.Sair\n')
-            
-            if not opcao_input.isdigit() or int(opcao_input) < 1 or int(opcao_input) > 2:
-                print("Opção inválida. Digite 1 para visualizar outro time ou 2 para sair.")
-            else:
-                opcao = int(opcao_input)
-
-        if opcao == 2:
-            break
+        print()
+        return

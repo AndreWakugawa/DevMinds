@@ -90,10 +90,6 @@ def dash_user(id_user):
 
 
 def dash_time(id_user):
-    import matplotlib.pyplot as plt
-    import numpy as np
-    import csv
-    import os
 
     csv_path = os.path.abspath('evalDB.csv')
     id_user = int(id_user)
@@ -163,3 +159,4 @@ def dash_time(id_user):
     fig.subplots_adjust(left=0.1, right=0.9, top=0.85, bottom=0.3)
 
     plt.show()
+    return
