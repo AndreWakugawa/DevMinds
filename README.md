@@ -4,8 +4,8 @@ Desenvolvido em Python para Windows. Realiza a dinâmica de avaliação democrá
 
 ## Dependências
 Testado em Windows 10, Windows 11 e Linux!
-- [Python v3.11](https://www.python.org/downloads/release/python-3113/)
-- [Git v2.40.0.1](https://git-scm.com/download/win)
+- [Python v3.11 ou superior](https://www.python.org/downloads/release/python-3113/)
+- [Git v2.40.0.1 ou superior](https://git-scm.com/download/win)
 - IDE que suporte as dependências acima - Recomendamos o [Visual Studio Code](https://code.visualstudio.com/download) da Microsoft, onde foi o projeto foi desenvolvido
 
 ## Instalação
@@ -33,9 +33,9 @@ Considerando sua utilização no meio acadêmico, torna-se necessária a integra
  - [x] Permitir a avaliação entre os integrantes dos times e a sua autoavaliação;
  - [x] Controlar acesso de usuários (login);
  - [x] Categorizar permissões de usuários (ADM e integrantes);
-> - [ ] Possuir controle de turmas e times;
-> - [ ] Controle de sprints, dos quais os integrantes serão avaliados;
-> - [ ] Prover dashboards operacionais e gerenciais (mín. 4).
+ - [x] Possuir controle de turmas e times;
+ - [x] Controle de sprints, dos quais os integrantes serão avaliados;
+ - [x] Prover dashboards operacionais e gerenciais (mín. 4).
 
 # Documentação
 
@@ -72,13 +72,14 @@ Considerando sua utilização no meio acadêmico, torna-se necessária a integra
 | DEV | Samantha Nogueira | [<img height="32" width="32" src="https://cdn.simpleicons.org/github" />](https://github.com/samrln)| [<img height="32" width="32" src="https://cdn.simpleicons.org/linkedin" />](https://www.linkedin.com/in/samrln/) |
 
 # Tecnologias utilizadas
-### Git [<img height="15" width="15" src="https://cdn.simpleicons.org/git" />](https://git-scm.com/)
 
-### Miro [<img height="15" width="15" src="https://cdn.simpleicons.org/miro/yellow" />](https://miro.com/pt/)
+### ClickUp [<img height="15" width="15" src="https://cdn.simpleicons.org/clickup" />](https://clickup.com/)
+
+### Git [<img height="15" width="15" src="https://cdn.simpleicons.org/git" />](https://git-scm.com/)
 
 ### GitHub [<img height="15" width="15" src="https://cdn.simpleicons.org/github" />](https://github.com/)
 
-### ClickUp [<img height="15" width="15" src="https://cdn.simpleicons.org/clickup" />](https://clickup.com/)
+### Miro [<img height="15" width="15" src="https://cdn.simpleicons.org/miro/yellow" />](https://miro.com/pt/)
 
 ### Python [<img height="15" width="15" src="https://cdn.simpleicons.org/python" />](https://www.python.org/)
 
